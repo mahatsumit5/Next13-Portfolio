@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^10.16.4",
+    "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "13.5.4"
+    "react-icons": "^4.11.0",
+    "typewriter-effect": "^2.21.0",
+    "uuid": "^9.0.1",
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "autoprefixer": "^10",
