@@ -3,12 +3,13 @@ import { AiOutlineClose, AiOutlineDownload } from "react-icons/ai";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
 import { RiMenu3Fill } from "react-icons/ri";
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu } from "@/redux/useMenuSlice";
 
 const TopMenu = () => {
-  const [isOpen, toggleMenu] = useState(false);
-
+  const { isOpen } = useSelector((store) => store.menuStore);
+  const dispatch = useDispatch();
   return (
     <div className="px-[40px] bg-light-bg py-4 z-10 max-xs:px-[20px]" id="home">
       <div className="top-menu ">
@@ -21,7 +22,7 @@ const TopMenu = () => {
           <div
             className="text-2xl z-50"
             onClick={() => {
-              toggleMenu(!isOpen);
+              dispatch(toggleMenu(!isOpen));
             }}
           >
             {isOpen ? <AiOutlineClose /> : <RiMenu3Fill />}

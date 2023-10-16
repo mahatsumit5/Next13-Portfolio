@@ -5,10 +5,11 @@ import { sidebarMenuLinks } from "@/constants/sidebarMenu";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Socialcons from "./social/Socialcons";
+import { useSelector } from "react-redux";
 const SideMenu = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen } = useSelector((store) => store.menuStore);
   const [activeLink, setActiveLink] = useState(sidebarMenuLinks[0]);
   const handleLinkclick = (link) => {
     setActiveLink(link);
@@ -44,7 +45,10 @@ const SideMenu = () => {
 
   return (
     <>
-      <section
+      <motion.section
+        initial={{ y: "-100vh" }}
+        animate={{ y: isOpen ? 0 : "-100vh" }}
+        transition={{ duration: 0.5 }}
         className={`side-menu border-r ${
           isOpen ? "max-lg:block" : "max-md:hidden"
         }`}
@@ -57,7 +61,7 @@ const SideMenu = () => {
               height={100}
               alt="sumit"
             />
-            <p className="font-bold text-dark-blue">Sumit Mahat</p>
+            <p className="font-bold text-dark-blue">Sumit Mahat </p>
           </div>
 
           <div>
@@ -92,7 +96,7 @@ const SideMenu = () => {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };
