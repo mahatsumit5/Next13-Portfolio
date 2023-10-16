@@ -35,11 +35,13 @@ const TopMenu = () => {
             </div>
           </div>
           <motion.a
+            href="../assets/resume.pdf"
             initial={{ x: 300 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.8 }}
             target="_blank"
             className="bg-dark-red text-white px-4 py-1 rounded-md hover:bg-dark-red/75 flex gap-2"
+            download
           >
             <AiOutlineDownload size={"20px"} className="font-bold" /> Download
             CV

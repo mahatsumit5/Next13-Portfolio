@@ -48,7 +48,6 @@ export const projects = [
   },
   {
     image: "../assets/projects/library.png",
-
     name: "Library Management Application",
     description:
       "This app is MERN stack based application built using react and NODE.JS",
