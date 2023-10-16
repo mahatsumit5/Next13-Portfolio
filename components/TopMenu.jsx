@@ -11,21 +11,42 @@ const TopMenu = () => {
   const { isOpen } = useSelector((store) => store.menuStore);
   const dispatch = useDispatch();
   return (
-    <div className="px-[40px] bg-light-bg py-4 z-10 max-xs:px-[20px]" id="home">
+    <div
+      className="px-[40px] bg-light-bg py-4 z-10 max-xs:px-[20px] "
+      id="home"
+    >
       <div className="top-menu ">
-        <div className="flex justify-between items-center w-full md:hidden">
-          <div className="flex gap-10 w-full">
-            <Link href="/">
-              <h1 className="font-bold text-3xl text-dark-red">S.Mahat</h1>
-            </Link>
-          </div>
-          <div
-            className="text-2xl z-50"
-            onClick={() => {
-              dispatch(toggleMenu(!isOpen));
-            }}
-          >
-            {isOpen ? <AiOutlineClose /> : <RiMenu3Fill />}
+        <div className="flex justify-between items-center w-full md:hidden ">
+          <div className="">
+            <div className="flex gap-10 w-full">
+              <Link href="/">
+                <h1 className="font-bold text-3xl text-dark-red">S.Mahat</h1>
+              </Link>
+            </div>
+            <div
+              className="text-2xl z-50 "
+              onClick={() => {
+                dispatch(toggleMenu(!isOpen));
+              }}
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: isOpen ? 1 : 0, type: "inertia" }}
+                transition={{ duration: 0.6 }}
+                className="fixed top-[0.7rem] right-[0.8rem] z-50 px-1 py-1 bg-dark-red rounded-full  text-white"
+              >
+                <AiOutlineClose />
+              </motion.div>
+
+              <motion.div
+                initial={{ scale: 1 }}
+                animate={{ scale: isOpen ? 0 : 1 }}
+                transition={{ duration: 0.6 }}
+                className="fixed top-[0.7rem] right-[0.8rem] z-50 px-1 py-1"
+              >
+                <RiMenu3Fill />
+              </motion.div>
+            </div>
           </div>
         </div>
         <div className="top-menu-info-container">

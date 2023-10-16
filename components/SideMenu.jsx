@@ -5,10 +5,14 @@ import { sidebarMenuLinks } from "@/constants/sidebarMenu";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Socialcons from "./social/Socialcons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu } from "@/redux/useMenuSlice";
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "-100%" },
+};
 const SideMenu = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref);
+  const dispatch = useDispatch();
   const { isOpen } = useSelector((store) => store.menuStore);
   const [activeLink, setActiveLink] = useState(sidebarMenuLinks[0]);
   const handleLinkclick = (link) => {
@@ -16,6 +20,7 @@ const SideMenu = () => {
   };
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
+    dispatch(toggleMenu(true));
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -46,8 +51,12 @@ const SideMenu = () => {
   return (
     <>
       <motion.section
-        initial={{ y: "-100vh" }}
-        animate={{ y: isOpen ? 0 : "-100vh" }}
+        // initial={{ x: -120, y: "-100vh" }}
+        // animate={{ x: isOpen ? 0 : -120, y: isOpen ? 0 : "-100vh" }}
+        // initial={{ y: "-100vh", x: 0 }}
+        // animate={{ y: isOpen ? 0 : "-100vh" }}
+        animate={isOpen ? "open" : "closed"}
+        variants={variants}
         transition={{ duration: 0.5 }}
         className={`side-menu border-r ${
           isOpen ? "max-lg:block" : "max-md:hidden"
