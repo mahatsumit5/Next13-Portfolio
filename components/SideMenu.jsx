@@ -6,19 +6,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import Socialcons from "./social/Socialcons";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "@/redux/useMenuSlice";
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" },
-};
+
 const SideMenu = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [screenSize, setScreenSize] = useState(null);
   const dispatch = useDispatch();
   const { isOpen } = useSelector((store) => store.menuStore);
   const [activeLink, setActiveLink] = useState(sidebarMenuLinks[0]);
   const handleLinkclick = (link) => {
     setActiveLink(link);
   };
-  const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
+    setScreenSize(window.innerWidth);
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -45,13 +44,25 @@ const SideMenu = () => {
       setActiveLink(sidebarMenuLinks[4]);
     }
   }, [scrollY]);
-  // useEffect(() => {
-  //   if (window.innerWidth < 768) {
-  //     dispatch(toggleMenu(false));
-  //     return;
-  //   }
-  //   dispatch(toggleMenu(true));
-  // }, [window]);
+
+  const detectSize = () => {
+    setScreenSize(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", detectSize);
+    return () => {
+      window.removeEventListener("resize", detectSize);
+    };
+  }, [screenSize]);
+
+  useEffect(() => {
+    if (screenSize < 768) {
+      dispatch(toggleMenu(false));
+      return;
+    }
+    dispatch(toggleMenu(true));
+  }, [screenSize]);
 
   return (
     <>
@@ -63,7 +74,6 @@ const SideMenu = () => {
             x: isOpen ? 0 : -120,
             opacity: isOpen ? 1 : 0,
           }}
-          variants={variants}
           transition={{ duration: 0.5 }}
           className={`side-menu border-r `}
         >
