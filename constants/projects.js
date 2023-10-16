@@ -1,17 +1,9 @@
-import calculator from "../public/assets/projects/calculator.png";
-import dalle from "../public/assets/projects/dale.png";
-import chatbot from "../public/assets/projects/chatbot.png";
-import movieDB from "../public/assets/projects/movieDB.png";
-import ntdl from "../public/assets/projects/ntdl.png";
-import cms from "../public/assets/projects/cms.jpg";
-import ecommerce from "../public/assets/projects/ecommerce.jpg";
-import library from "../public/assets/projects/library.png";
 export const projects = [
   {
     name: "CFW E-commerce",
-    githubUrl:
-      "https://github.com/DevAntonioRogers/Full-Stack-Moonlamp-E-commerce",
+    githubUrl: "https://github.com/mahatsumit5/cfw-client",
     image: "../assets/projects/ecommerce.jpg",
+    chrome: "http://ecommwebsite.s3-website-us-east-1.amazonaws.com/",
   },
   {
     image: "../assets/projects/portfolioV1.png",

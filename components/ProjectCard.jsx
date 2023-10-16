@@ -1,5 +1,10 @@
 "use client";
-import { AiFillYoutube, AiFillEye, AiFillChrome } from "react-icons/ai";
+import {
+  AiFillYoutube,
+  AiFillEye,
+  AiFillChrome,
+  AiOutlineGithub,
+} from "react-icons/ai";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -31,19 +36,14 @@ const ProjectCard = ({
           style={{ objectFit: "fill" }}
         />
       </div>
-      <h3>{name}</h3>
+      <h3 className="mt-4 text-dark-blue">{name}</h3>
       <div className="flex gap-2 items-center w-full">
         <a
           href={githubUrl}
           target="_blank"
           className="text-dark-blue p-1 rounded-full text-xl"
         >
-          <Image
-            src="/assets/git.svg.png"
-            width={20}
-            height={20}
-            alt="github"
-          />
+          <AiOutlineGithub className="text-2xl" />
         </a>
 
         <a
