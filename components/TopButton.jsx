@@ -7,7 +7,6 @@ const TopButton = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
-        console.log("is cssssss");
         setIsscrolling(true);
       } else {
         setIsscrolling(false);

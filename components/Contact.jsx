@@ -5,11 +5,13 @@ import {
   AiFillFacebook,
   AiFillGithub,
   AiFillInstagram,
+  AiFillLinkedin,
   AiFillTwitterCircle,
   AiFillWechat,
   AiFillYoutube,
 } from "react-icons/ai";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
+import Socialcons from "./social/Socialcons";
 
 const Contact = () => {
   const sendEmail = (e) => {
@@ -26,11 +28,10 @@ const Contact = () => {
             {/* contact form */}
             <SectionTitle title={"Contact Me"} />
 
-            <p className="text-dark-blue">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
-              illum nemo quibusdam quaerat doloribus saepe iusto laboriosam
-              dicta atque tempora, sed eaque, inventore quia harum, laborum quod
-              provident! Aperiam, earum.
+            <p className="text-dark-blue mt-2">
+              Wanna work on a project togther.
+              <br></br>
+              Feel free to contact me.
             </p>
             <p className="text-dark-blue mt-12">Email me at:</p>
             <h4>
@@ -42,41 +43,7 @@ const Contact = () => {
               <div className="flex flex-col gap-2">
                 <h5 className="text-dark-blue">Socials</h5>
                 <div className="flex gap-5">
-                  <a
-                    href="#"
-                    className="text-3xl
-                   text-dark-blue"
-                  >
-                    <AiFillTwitterCircle />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-3xl
-                   text-dark-blue"
-                  >
-                    <AiFillGithub />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-3xl
-                   text-dark-blue"
-                  >
-                    <AiFillInstagram />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-3xl
-                   text-dark-blue"
-                  >
-                    <AiFillYoutube />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-3xl
-                   text-dark-blue"
-                  >
-                    <AiFillFacebook />
-                  </a>
+                  <Socialcons />
                 </div>
               </div>
             </div>
@@ -110,7 +77,7 @@ const Contact = () => {
                   className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-start">
                 <button
                   type="submit"
                   className="transition-all duration-150  rounded-lg py-3 px-6 text-white bg-dark-red hover:shadow-lg hover:bg-dark-red/75"

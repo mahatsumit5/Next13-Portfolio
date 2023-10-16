@@ -19,10 +19,7 @@ const Projects = () => {
               name={project.name}
               githubUrl={project.githubUrl}
               image={project.image}
-              youtube={project.youtube}
-              deployed={project.deployed}
-              youtubeUrl={project.youtubeUrl}
-              projectUrl={project.projectUrl}
+              chrome={project.chrome}
             />
           ))}
         </div>

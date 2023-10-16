@@ -41,7 +41,8 @@ const TopMenu = () => {
             target="_blank"
             className="bg-dark-red text-white px-4 py-1 rounded-md hover:bg-dark-red/75 flex gap-2"
           >
-            <AiOutlineDownload size={"20px"} className="font-bold" /> CV
+            <AiOutlineDownload size={"20px"} className="font-bold" /> Download
+            CV
           </motion.a>
         </div>
       </div>

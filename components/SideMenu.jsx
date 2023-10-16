@@ -1,21 +1,46 @@
 "use client";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { sidebarMenuLinks } from "@/constants/sidebarMenu";
-import { MdOutlineSettingsApplications } from "react-icons/md";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import Socialcons from "./social/Socialcons";
 const SideMenu = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
   const [activeLink, setActiveLink] = useState(sidebarMenuLinks[0]);
   const handleLinkclick = (link) => {
     setActiveLink(link);
   };
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  useEffect(() => {
+    if (scrollY < 350) {
+      setActiveLink(sidebarMenuLinks[0]);
+    }
+    if (scrollY > 350 && scrollY < 850) {
+      setActiveLink(sidebarMenuLinks[1]);
+    }
+
+    if (scrollY > 850 && scrollY < 1200) {
+      setActiveLink(sidebarMenuLinks[2]);
+    }
+    if (scrollY > 1200 && scrollY < 2000) {
+      setActiveLink(sidebarMenuLinks[3]);
+    }
+    if (scrollY > 2000) {
+      setActiveLink(sidebarMenuLinks[4]);
+    }
+  }, [scrollY]);
 
   return (
     <>
@@ -60,15 +85,7 @@ const SideMenu = () => {
           </div>
           <div className="flex items-center flex-col justify-center text-center">
             <div className="flex flex-col lg:flex-row items-center gap-4 mb-3">
-              <a href="/" target="_blank" className="social-icon text-white">
-                <AiFillLinkedin />
-              </a>
-              <a href="/" target="_blank" className="social-icon text-white">
-                <AiFillGithub />
-              </a>
-              <a href="/" target="_blank" className="social-icon text-white">
-                <AiFillInstagram />
-              </a>
+              <Socialcons />
             </div>
             <p className="max-md:hidden">
               Copyright 2023 Sumit Mahat.All rights reserved

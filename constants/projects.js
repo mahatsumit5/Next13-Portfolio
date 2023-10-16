@@ -1,114 +1,82 @@
+import calculator from "../public/assets/projects/calculator.png";
+import dalle from "../public/assets/projects/dale.png";
+import chatbot from "../public/assets/projects/chatbot.png";
+import movieDB from "../public/assets/projects/movieDB.png";
+import ntdl from "../public/assets/projects/ntdl.png";
+import cms from "../public/assets/projects/cms.jpg";
+import ecommerce from "../public/assets/projects/ecommerce.jpg";
+import library from "../public/assets/projects/library.png";
 export const projects = [
   {
-    name: "Moonlamp E-commerce",
-    githubUrl: "https://github.com/DevAntonioRogers/Full-Stack-Moonlamp-E-commerce",
-    image: "../../assets/moonlamp.jpg",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=3qiMJ5-0RVA",
-    category: ["react", 'fs'],
-
+    name: "CFW E-commerce",
+    githubUrl:
+      "https://github.com/DevAntonioRogers/Full-Stack-Moonlamp-E-commerce",
+    image: "../assets/projects/ecommerce.jpg",
   },
   {
-    name: "Premium Caps",
-    githubUrl: "https://github.com/DevAntonioRogers/premium-caps-ecommerce",
-    image: "../../assets/premium.jpeg.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=pvcLCSIezlA&t=180s",
-    category: ["react", 'fs'],
+    image: "../assets/projects/portfolioV1.png",
+    name: "Portfolio V1",
+    description: "This Calculator was created using React Componentes.",
+    chrome: "https://sm-portfolio-delta.vercel.app/#",
+    githubUrl: "https://github.com/mahatsumit5/react-portfolio.git",
   },
   {
-    name: "The Art Spot",
-    githubUrl: "https://github.com/DevAntonioRogers",
-    image: "../../assets/art.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=LbkvSDPV3eg&t=719s",
-    category: ["react", 'fs'],
-  },
-  {
-    name: "Imagine Media",
-    githubUrl: "https://github.com/DevAntonioRogers/Imagine",
-    image: "../../assets/imagine.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=AP8tZwPzsXA&t=2631s",
-    projectUrl: "https://imagine-eight.vercel.app/",
-    category: ["react"],
-    deployed: true
-  },
-  {
-    name: "Image Generator",
-    githubUrl: "https://github.com/DevAntonioRogers/ai-react-image-generator",
-    image: "../../assets/imagegenerator.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=n3infyEjLPQ",
-    category: ["react"],
-  },
-  {
-    name: "Wagster",
-    githubUrl: "https://github.com/DevAntonioRogers/Wagster",
-    image: "../../assets/wagster.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=tCCcGTEYZ-Q&t=30s",
-    projectUrl: "https://wagster.vercel.app",
-    category: ["vanilla"],
-    deployed: true,
-  },
-  {
-    name: "First Personal Portfolio",
-    githubUrl: "https://github.com/DevAntonioRogers/portfolio-website",
-    image: "../../assets/portfolio.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=aU0N-xQLtyk",
-    projectUrl: "portfolio-website-eta-dun.vercel.app",
-    category: ["react"],
-    deployed: true,
-  },
-  {
-    name: "Tic-Tac-Toe",
-    githubUrl: "https://github.com/DevAntonioRogers/React-TicTacToe-Game",
-    image: "../../assets/tic-tac-toe.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=K82Vfg7nfPU&t=16s",
-    projectUrl: "tictactoe.antoniorogers.com/",
-    category: ["react"],
-    deployed: true,
-  },
-  {
-    name: "Wivaro Landing Page",
-    githubUrl: "https://github.com/DevAntonioRogers",
-    image: "../../assets/wivaro.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=7f8vE_zKTqI&t=12s",
-    category: ["vanilla"],
-
-  },
-  {
-    name: "Weather App v2",
-    githubUrl: "https://github.com/DevAntonioRogers/react-weatherapp-v2",
-    youtubeUrl: "https://www.youtube.com/watch?v=UFzeuibb7l0&t=4890s",
-    projectUrl: "theweatherapp-theta.vercel.app",
-    image: "../../assets/weatherv2.png",
-    youtube: true,
-    category: ["react"],
-
-  },
-  {
-    name: "Portfolio Website",
-    githubUrl: "https://github.com/DevAntonioRogers/vanilla-portfolio",
-    image: "../../assets/devport.png",
-    youtube: true,
-    youtubeUrl: "https://www.youtube.com/watch?v=zdGdgBq9jf4&t=23s",
-    category: ["vanilla"],
-
-  },
-  {
-    name: "Weather App",
-    githubUrl: "https://github.com/DevAntonioRogers/Weather-App",
-    youtubeUrl: "https://www.youtube.com/watch?v=vyzL61FlmM0&t=144s",
-    image: "../../assets/weatherv1.png",
-    youtube: true,
-    category: ["react"],
-
+    image: "../assets/projects/dale.png",
+    name: "DALLE Image Generation",
+    description: "Built using OPENAI dalle API for image generation",
+    chrome: "https://dalle-z6rw.onrender.com/",
+    githubUrl: "https://github.com/mahatsumit5/OPENAI-DALLE.git",
   },
 
+  {
+    image: "../assets/projects/chatbot.png",
 
-]
+    name: "ChatBot",
+    description: "This chat bot was created using OpenAI API.",
+    chrome: "https://openai-api-clinent.vercel.app/",
+    githubUrl: "https://vercel.com/mahatsumit5/openai-api-clinent",
+  },
+
+  {
+    image: "../assets/projects/movieDB.png",
+
+    name: "Movie Database",
+    description:
+      "The website uses movie API TO fetch data form the server and displays in the browser.",
+    chrome: "https://movie-api-chi-nine.vercel.app/#",
+    githubUrl: "https://github.com/mahatsumit5/movie-API.git",
+  },
+  {
+    image: "../assets/projects/ntdl.png",
+
+    name: "NOT-TO-DO-LIST",
+    description: "Using this app you can keep track of your ",
+    chrome: "https://not-todos-api.onrender.com/",
+    githubUrl: "https://github.com/mahatsumit5/NOT-TODOS-FRONTEND",
+  },
+  {
+    image: "../assets/projects/library.png",
+
+    name: "Library Management Application",
+    description:
+      "This app is MERN stack based application built using react and NODE.JS",
+    chrome: "https://library-app-api.onrender.com",
+    githubUrl: "https://github.com/mahatsumit5/library-App-API",
+  },
+  {
+    image: "../assets/projects/cms.jpg",
+    name: "Ecommerce Management System",
+    description:
+      "This website is built on NodeJS and React and is deployed on render. I have used JWT verification and S3 bucket for storing images.",
+    chrome: "http://cfw-cms-website.s3-website-us-east-1.amazonaws.com/",
+    githubUrl: "https://github.com/mahatsumit5/cfw_ecommerce_cms_api",
+  },
+  {
+    image: "../assets/projects/expense-tracker.png",
+    name: "NEXT13 Expenses tracker",
+    description:
+      "This website is built on NodeJS and React and is deployed on render. I have used JWT verification and S3 bucket for storing images.",
+    chrome: "https://next-13-finance-tracker.vercel.app/",
+    githubUrl: "https://github.com/mahatsumit5/NEXT13-FINANCE-TRACKER",
+  },
+];

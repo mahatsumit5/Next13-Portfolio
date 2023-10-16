@@ -1,5 +1,5 @@
 "use client";
-import { AiFillYoutube, AiFillEye } from "react-icons/ai";
+import { AiFillYoutube, AiFillEye, AiFillChrome } from "react-icons/ai";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -8,10 +8,10 @@ const ProjectCard = ({
   name,
   githubUrl,
   image,
-  youtube,
+
   deployed,
   youtubeUrl,
-  projectUrl,
+  chrome,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -23,11 +23,14 @@ const ProjectCard = ({
       transition={{ duration: 0.5 }}
       className="mb-4 p-4 border border-gray-200 rounded-lg shadow-md bg-light-bg"
     >
-      <img
-        src={image}
-        alt={`${name} Image`}
-        className="w-full h-auto mb-2 rounded"
-      />
+      <div className="h-[180px] w-full overflow-hidden">
+        <img
+          src={image}
+          alt={`${name} Image`}
+          className="mb-2 rounded  "
+          style={{ objectFit: "fill" }}
+        />
+      </div>
       <h3>{name}</h3>
       <div className="flex gap-2 items-center w-full">
         <a
@@ -42,24 +45,14 @@ const ProjectCard = ({
             alt="github"
           />
         </a>
-        {youtube ? (
-          <a
-            href={youtubeUrl}
-            target="_blank"
-            className="text-dark-blue hover:underline text-2xl"
-          >
-            <AiFillYoutube />
-          </a>
-        ) : null}
-        {deployed ? (
-          <a
-            href={projectUrl}
-            target="_blank"
-            className="text-dark-blue hover:underline text-2xl"
-          >
-            <AiFillEye />
-          </a>
-        ) : null}
+
+        <a
+          href={chrome}
+          target="_blank"
+          className="text-dark-blue hover:underline text-2xl"
+        >
+          <AiFillChrome />
+        </a>
       </div>
     </motion.div>
   );

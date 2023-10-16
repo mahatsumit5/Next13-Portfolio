@@ -41,8 +41,8 @@ export const Hero = () => {
         </div>
         <Image
           src="/assets/hero.png"
-          width={400}
-          height={400}
+          width={300}
+          height={300}
           alt="sumit mahat"
           className="z-10"
         />
