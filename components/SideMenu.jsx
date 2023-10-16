@@ -45,20 +45,18 @@ const SideMenu = () => {
       setActiveLink(sidebarMenuLinks[4]);
     }
   }, [scrollY]);
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      dispatch(toggleMenu(false));
-      return;
-    }
-    dispatch(toggleMenu(true));
-  }, [window.innerWidth]);
+  // useEffect(() => {
+  //   if (window.innerWidth < 768) {
+  //     dispatch(toggleMenu(false));
+  //     return;
+  //   }
+  //   dispatch(toggleMenu(true));
+  // }, [window]);
 
   return (
     <>
       <AnimatePresence>
         <motion.section
-          // initial={{ x: -120, y: "-100vh" }}
-          // animate={{ x: isOpen ? 0 : -120, y: isOpen ? 0 : "-100vh" }}
           initial={{ y: "-100vh", x: -120, opacity: 0 }}
           animate={{
             y: isOpen ? 0 : "-100vh",
