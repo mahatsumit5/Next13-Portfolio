@@ -6,6 +6,7 @@ import {
   BiLogoNodejs,
   BiLogoRedux,
   BiLogoTailwindCss,
+  BiLogoBootstrap,
 } from "react-icons/bi";
 import { AiFillGithub, AiFillHtml5 } from "react-icons/ai";
 import { FiFigma } from "react-icons/fi";
@@ -42,5 +43,11 @@ export const skills = [
     color: "#3b82f6",
     icon: BiLogoTailwindCss,
     title: "Tailwind",
+  },
+  {
+    id: v4(),
+    color: "#C050E7 ",
+    icon: BiLogoBootstrap,
+    title: "Bootstrap",
   },
 ];

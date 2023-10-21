@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 import TopMenu from "@/components/TopMenu";
 import { Provider } from "react-redux"; //for redux-toolkot
 import { store } from "@/store/useMenuStore";
+import { AnimatePresence } from "framer-motion";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,9 +24,11 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <main className="flex flex-row">
             <SideMenu />
-            <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
-              <TopMenu /> {children}
-            </section>
+            <AnimatePresence>
+              <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
+                <TopMenu /> {children}
+              </section>
+            </AnimatePresence>
           </main>
         </Provider>
       </body>

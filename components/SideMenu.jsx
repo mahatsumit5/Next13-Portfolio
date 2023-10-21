@@ -57,6 +57,8 @@ const SideMenu = () => {
   }, [screenSize]);
 
   useEffect(() => {
+    if (screenSize < 1024) {
+    }
     if (screenSize < 768) {
       dispatch(toggleMenu(false));
       return;
@@ -68,11 +70,11 @@ const SideMenu = () => {
     <>
       <AnimatePresence>
         <motion.section
-          initial={{ y: "-100vh", x: -120, opacity: 0 }}
+          initial={{ y: "-100vh", opacity: 0, width: "100%" }}
           animate={{
             y: isOpen ? 0 : "-100vh",
-            x: isOpen ? 0 : -120,
             opacity: isOpen ? 1 : 0,
+            width: screenSize < 1024 ? "150px" : "300px",
           }}
           transition={{ duration: 0.5 }}
           className={`side-menu border-r `}
