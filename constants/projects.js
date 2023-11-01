@@ -25,7 +25,7 @@ export const projects = [
 
     name: "ChatBot",
     description: "This chat bot was created using OpenAI API.",
-    chrome: "https://openai-api-clinent.vercel.app/",
+    chrome: "https://chatbot-psi-indol.vercel.app/",
     githubUrl: "https://vercel.com/mahatsumit5/openai-api-clinent",
   },
 

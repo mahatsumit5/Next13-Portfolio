@@ -12,10 +12,12 @@ import {
 } from "react-icons/ai";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
 import Socialcons from "./social/Socialcons";
+import { POST } from "@/app/api/send/route";
 
 const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
+    POST();
   };
   return (
     <div
