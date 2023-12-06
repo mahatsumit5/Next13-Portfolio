@@ -55,6 +55,14 @@ export const projects = [
     githubUrl: "https://github.com/mahatsumit5/library-App-API",
   },
   {
+    image: "../assets/projects/chat.png",
+    name: "Postgre Chat Application",
+    description:
+      "This app is PERN stack based application built using vite-react and NODE.JS",
+    chrome: "https://messenger-j2bf.onrender.com/",
+    githubUrl: "https://github.com/mahatsumit5/postgres-chat",
+  },
+  {
     image: "../assets/projects/cms.jpg",
     name: "Ecommerce Management System",
     description:
