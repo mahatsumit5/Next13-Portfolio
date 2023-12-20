@@ -7,12 +7,14 @@ import {
   BiLogoRedux,
   BiLogoTailwindCss,
   BiLogoBootstrap,
+  BiLogoPostgresql,
 } from "react-icons/bi";
+import { TbBrandNextjs } from "react-icons/tb";
 import { AiFillGithub, AiFillHtml5 } from "react-icons/ai";
 import { FiFigma } from "react-icons/fi";
 import { SiJira } from "react-icons/si";
 import { BiLogoAws } from "react-icons/bi";
-import { SiMui, SiMongodb } from "react-icons/si";
+import { SiMui, SiPrisma, SiMongodb } from "react-icons/si";
 import { v4 } from "uuid";
 export const skills = [
   { id: v4(), color: "#3b82f6", icon: BiLogoReact, title: "React" },
@@ -49,5 +51,23 @@ export const skills = [
     color: "#C050E7 ",
     icon: BiLogoBootstrap,
     title: "Bootstrap",
+  },
+  {
+    id: v4(),
+    color: "#00008b",
+    icon: TbBrandNextjs,
+    title: "NEXTJS",
+  },
+  {
+    id: v4(),
+    color: "#00008b",
+    icon: BiLogoPostgresql,
+    title: "Postgresql",
+  },
+  {
+    id: v4(),
+    color: "black",
+    icon: SiPrisma,
+    title: "Prisma",
   },
 ];
