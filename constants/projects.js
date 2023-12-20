@@ -78,4 +78,12 @@ export const projects = [
     chrome: "https://next-13-finance-tracker.vercel.app/",
     githubUrl: "https://github.com/mahatsumit5/NEXT13-FINANCE-TRACKER",
   },
+  {
+    image: "../assets/projects/evently.png",
+    name: "Evently",
+    description:
+      "This website is built on NEXT14 using zod validation. I have used mongoDb as my database option along with cleark for user signup purpose.",
+    chrome: "https://next14-evently-mahatsumit5.vercel.app/",
+    githubUrl: "https://github.com/mahatsumit5/Evently-NExt14",
+  },
 ];
