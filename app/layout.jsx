@@ -6,6 +6,7 @@ import TopMenu from "@/components/TopMenu";
 import { Provider } from "react-redux"; //for redux-toolkot
 import { store } from "@/store/useMenuStore";
 import { AnimatePresence } from "framer-motion";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
             <AnimatePresence>
               <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
                 <TopMenu /> {children}
+                <Footer />
               </section>
             </AnimatePresence>
           </main>
