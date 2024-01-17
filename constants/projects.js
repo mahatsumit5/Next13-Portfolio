@@ -6,6 +6,12 @@ export const projects = [
     chrome: "http://ecommwebsite.s3-website-us-east-1.amazonaws.com/",
   },
   {
+    name: "Next14-Ecommerce",
+    githubUrl: "https://github.com/mahatsumit5/cfw-client",
+    image: "../assets/projects/ecommerce2.png",
+    chrome: "https://next-ecommerce-seven-alpha.vercel.app/",
+  },
+  {
     image: "../assets/projects/portfolioV1.png",
     name: "Portfolio V1",
     description: "This Calculator was created using React Componentes.",
@@ -29,15 +35,6 @@ export const projects = [
     githubUrl: "https://vercel.com/mahatsumit5/openai-api-clinent",
   },
 
-  {
-    image: "../assets/projects/movieDB.png",
-
-    name: "Movie Database",
-    description:
-      "The website uses movie API TO fetch data form the server and displays in the browser.",
-    chrome: "https://movie-api-chi-nine.vercel.app/#",
-    githubUrl: "https://github.com/mahatsumit5/movie-API.git",
-  },
   {
     image: "../assets/projects/ntdl.png",
 

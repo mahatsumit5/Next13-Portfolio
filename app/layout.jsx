@@ -1,5 +1,4 @@
 "use client";
-import SideMenu from "@/components/SideMenu";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import TopMenu from "@/components/TopMenu";
@@ -7,6 +6,7 @@ import { Provider } from "react-redux"; //for redux-toolkot
 import { store } from "@/store/useMenuStore";
 import { AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
+import SideMenu from "@/components/SideMenu";
 
 const poppins = Poppins({
   subsets: ["latin"],
