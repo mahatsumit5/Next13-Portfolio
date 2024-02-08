@@ -6,8 +6,8 @@ const uploadFile = (file) => {
   console.log(file);
   const bucketName = process.env.AWS_BUCKET_NAME;
   const region = process.env.AWS_REGION;
-  const accessKey = process.env.AWS_ACCESS_KEY;
-  const secretKey = process.env.AWS_SECRET_KEY;
+  const accessKey = process.env.AWSACCESS_KEY;
+  const secretKey = process.env.AWSSECRET_KEY;
 
   const s3 = new S3({
     region,
