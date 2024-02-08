@@ -4,9 +4,11 @@ import { createProjects } from "@/lib/actions/projects.actions";
 import { writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
 import path, { join } from "path";
+import os from "os";
+import uploadFile from "@/utils/s3";
 export async function POST(req) {
   const __dirname = path.resolve();
-
+  const tempDir = os.homedir();
   try {
     const data = await req.formData();
     const file = data.get("image");
@@ -20,15 +22,15 @@ export async function POST(req) {
     }
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    const image = join(__dirname, "public/assets/projects", file.name);
-    console.log("this is imageurl", image);
+    const image = join(tempDir, file.name);
     await writeFile(image, buffer);
+    const { Location } = await uploadFile({ ...file, path: image });
     const newProjects = await createProjects({
       name,
       chrome,
       githubUrl,
       description,
-      image,
+      image: Location,
     });
     if (newProjects?._id) {
       return NextResponse.json({ status: "success", newProjects });
