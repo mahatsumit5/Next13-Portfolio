@@ -4,9 +4,10 @@ import React, { useState } from "react";
 
 function LoginForm({ setFormToDisplay }) {
   const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const handleOnSubmit = async () => {
     const { status, user, message } = await loginUser(form);
-    console.log(status, user, message);
+
     if (user?._id && status === "success") {
       localStorage.setItem("id", JSON.stringify(user._id));
       setFormToDisplay("Projects");

@@ -1,3 +1,5 @@
+process.noDeprecation = true;
+
 import { createProjects } from "@/lib/actions/projects.actions";
 import { writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
@@ -7,13 +9,12 @@ export async function POST(req) {
 
   try {
     const data = await req.formData();
-    console.log(data);
     const file = data.get("image");
     const name = data.get("name");
     const chrome = data.get("chrome");
     const githubUrl = data.get("githubUrl");
     const description = data.get("description");
-    console.log(file);
+
     if (!file?.name) {
       throw new Error("Please select a file.");
     }
