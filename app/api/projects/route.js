@@ -20,7 +20,7 @@ export async function POST(req) {
     }
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    const image = join("/tmp", __dirname, "public/assets/projects", file.name);
+    const image = join(__dirname, "public/assets/projects", file.name);
     console.log("this is imageurl", image);
     await writeFile(image, buffer);
     const newProjects = await createProjects({
