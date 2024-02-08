@@ -18,13 +18,6 @@ export const projects = [
     chrome: "https://sm-portfolio-delta.vercel.app/#",
     githubUrl: "https://github.com/mahatsumit5/react-portfolio.git",
   },
-  {
-    image: "../assets/projects/dale.png",
-    name: "DALLE Image Generation",
-    description: "Built using OPENAI dalle API for image generation",
-    chrome: "https://dalle-z6rw.onrender.com/",
-    githubUrl: "https://github.com/mahatsumit5/OPENAI-DALLE.git",
-  },
 
   {
     image: "../assets/projects/chatbot.png",
@@ -36,14 +29,6 @@ export const projects = [
   },
 
   {
-    image: "../assets/projects/ntdl.png",
-
-    name: "NOT-TO-DO-LIST",
-    description: "Using this app you can keep track of your ",
-    chrome: "https://not-todos-api.onrender.com/",
-    githubUrl: "https://github.com/mahatsumit5/NOT-TODOS-FRONTEND",
-  },
-  {
     image: "../assets/projects/library.png",
     name: "Library Management Application",
     description:
@@ -51,14 +36,7 @@ export const projects = [
     chrome: "https://library-app-api.onrender.com",
     githubUrl: "https://github.com/mahatsumit5/library-App-API",
   },
-  {
-    image: "../assets/projects/chat.png",
-    name: "Postgre Chat Application",
-    description:
-      "This app is PERN stack based application built using vite-react and NODE.JS",
-    chrome: "https://messenger-j2bf.onrender.com/",
-    githubUrl: "https://github.com/mahatsumit5/postgres-chat",
-  },
+
   {
     image: "../assets/projects/cms.jpg",
     name: "Ecommerce Management System",

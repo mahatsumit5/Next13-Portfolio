@@ -2,10 +2,8 @@ import { skills } from "@/constants/skills";
 import Image from "next/image";
 import React from "react";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
-import { getAllSkills } from "@/actions/skills.actions";
 
 export const Skills = async () => {
-  const ski = await getAllSkills();
   return (
     <section
       className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"
