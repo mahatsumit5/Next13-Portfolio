@@ -1,14 +1,13 @@
 "use client";
 import "./globals.css";
-import { Poppins, Montserrat } from "next/font/google";
-import TopMenu from "@/components/TopMenu";
+import { Montserrat } from "next/font/google";
 import { Provider } from "react-redux"; //for redux-toolkot
 import { store } from "@/store/useMenuStore";
 import { AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import SideMenu from "@/components/SideMenu";
-import { useState } from "react";
 import { ThemeProvider } from "next-themes";
+import TopMenu from "@/components/TopMenu";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -21,7 +20,6 @@ const poppins = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
-  const [theme, setTheme] = useState("light");
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>

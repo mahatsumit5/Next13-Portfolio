@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "@/redux/useMenuSlice";
 import { Kaushan_Script } from "next/font/google";
-import ThemeToggle from "./ThemeToggle";
 const lobster_font = Kaushan_Script({
   subsets: ["latin"],
   weight: ["400"],
@@ -65,7 +64,7 @@ const TopMenu = () => {
               <span className="text-dark-blue">mahatsumit5@gmail.com</span>
             </div>
           </div>
-          {/* <ThemeToggle /> */}
+
           <motion.a
             href="../assets/resume.pdf"
             initial={{ x: 300 }}

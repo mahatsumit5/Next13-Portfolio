@@ -32,7 +32,7 @@ const page = () => {
         >
           Back
         </button>
-      </div>{" "}
+      </div>
       {form[formToDisplay]}
     </div>
   );
