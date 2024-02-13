@@ -2,8 +2,11 @@
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/constants/projects";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
+import CustomModal from "./CustomModal";
+import { useSelector } from "react-redux";
 
 const Projects = () => {
+  const { isModalOpen } = useSelector((store) => store.menuStore);
   return (
     <div
       className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"
@@ -20,8 +23,11 @@ const Projects = () => {
               githubUrl={project.githubUrl}
               image={project.image}
               chrome={project.chrome}
+              description={project.description}
+              technologies={project.technologies}
             />
           ))}
+          {isModalOpen && <CustomModal />}
         </div>
       </div>
     </div>

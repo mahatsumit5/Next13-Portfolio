@@ -82,10 +82,11 @@ const SideMenu = () => {
           <div className="flex w-full flex-1 flex-col gap-10 justify-between items-center">
             <div className="flex justify-center items-center flex-col gap-2 rounded-full ">
               <Image
-                src="/assets/hero.png"
-                width={100}
-                height={100}
+                src="/assets/profile.jpg"
+                width={200}
+                height={200}
                 alt="sumit"
+                className="border-solid border-4 border-gray-200 shadow-lg rounded-full"
               />
               <p className="font-bold text-dark-blue">Sumit Mahat </p>
             </div>
@@ -101,7 +102,7 @@ const SideMenu = () => {
                     whileHover={{ scale: 1.2 }}
                     key={link.label}
                     href={`${link.route}`}
-                    className={`relative flex justify-center items-center rounded-lg p-3 ${
+                    className={`relative flex justify-center items-center rounded-lg p-3 font-extrabold ${
                       isActive ? "bg-dark-red text-white" : ""
                     }`}
                     onClick={() => {

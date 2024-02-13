@@ -11,7 +11,6 @@ const ProjectForm = () => {
     setForm({ ...form, [name]: value });
   };
   const handleClick = async () => {
-    console.log(files);
     try {
       const formDt = new FormData();
       for (let key in form) {

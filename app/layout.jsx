@@ -1,6 +1,6 @@
 "use client";
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import TopMenu from "@/components/TopMenu";
 import { Provider } from "react-redux"; //for redux-toolkot
 import { store } from "@/store/useMenuStore";
@@ -8,9 +8,9 @@ import { AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import SideMenu from "@/components/SideMenu";
 
-const poppins = Poppins({
+const poppins = Montserrat({
   subsets: ["latin"],
-  weight: ["100", "400", "700", "800"],
+  weight: ["100", "400", "600"],
 });
 
 // export const metadata = {
@@ -21,7 +21,7 @@ const poppins = Poppins({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${poppins.className} `}>
         <Provider store={store}>
           <main className="flex flex-row">
             <SideMenu />

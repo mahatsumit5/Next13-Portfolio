@@ -3,7 +3,6 @@ import fs from "fs";
 
 //upload file to s3
 const uploadFile = (file) => {
-  console.log(file);
   const bucketName = process.env.AWS_BUCKET_NAME;
   const region = process.env.AWS_REGION;
   const accessKey = process.env.AWSACCESS_KEY;

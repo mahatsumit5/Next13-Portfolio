@@ -6,7 +6,11 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "@/redux/useMenuSlice";
-
+import { Kaushan_Script } from "next/font/google";
+const lobster_font = Kaushan_Script({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 const TopMenu = () => {
   const { isOpen } = useSelector((store) => store.menuStore);
   const dispatch = useDispatch();
@@ -20,7 +24,11 @@ const TopMenu = () => {
           <div className="">
             <div className="flex gap-10 w-full">
               <Link href="/">
-                <h1 className="font-bold text-3xl text-dark-red">S.Mahat</h1>
+                <h1
+                  className={`${lobster_font.className} text-2xl text-dark-red`}
+                >
+                  Sumit Mahat
+                </h1>
               </Link>
             </div>
             <div

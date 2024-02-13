@@ -12,5 +12,4 @@ const storage = diskStorage({
   },
 });
 
-const upload = multer({ storage });
-export const uploadMiddleware = upload.single("icon");
+export const upload = multer({ storage });

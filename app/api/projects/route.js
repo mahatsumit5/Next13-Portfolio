@@ -6,24 +6,18 @@ import { NextResponse } from "next/server";
 import path, { join } from "path";
 import os from "os";
 import uploadFile from "@/utils/s3";
+import { upload } from "@/utils/multer";
 export async function POST(req) {
-  const __dirname = path.resolve();
-  const tempDir = os.homedir();
   try {
     const data = await req.formData();
-    const file = data.get("image");
     const name = data.get("name");
     const chrome = data.get("chrome");
     const githubUrl = data.get("githubUrl");
     const description = data.get("description");
-
     if (!file?.name) {
       throw new Error("Please select a file.");
     }
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const image = join(tempDir, file.name);
-    await writeFile(image, buffer);
+
     const { Location } = await uploadFile({ ...file, path: image });
     const newProjects = await createProjects({
       name,
