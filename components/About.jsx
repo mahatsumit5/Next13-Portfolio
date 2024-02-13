@@ -10,7 +10,7 @@ const About = () => {
   const isInView2 = useInView(ref2);
   return (
     <section
-      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"
+      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white "
       id="about"
     >
       <div className="max-w-[1240px] mx-auto">

@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+import { withUt } from "uploadthing/tw";
 const defaultTheme = require("tailwindcss/defaultTheme");
-module.exports = {
+module.exports = withUt({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: ["class", '[data-mode="dark"]'],
   theme: {
     screens: {
       xs: "475px",
@@ -22,4 +24,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+});

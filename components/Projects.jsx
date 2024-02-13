@@ -1,12 +1,15 @@
 "use client";
 import ProjectCard from "./ProjectCard";
-import { projects } from "@/constants/projects";
+// import { projects } from "@/constants/projects";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
 import CustomModal from "./CustomModal";
 import { useSelector } from "react-redux";
 
-const Projects = () => {
+const Projects = ({ projects }) => {
   const { isModalOpen } = useSelector((store) => store.menuStore);
+  if (!projects.length) {
+    return <h1 className="px-[40px] text-2xl ">No projects available</h1>;
+  }
   return (
     <div
       className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"

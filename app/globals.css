@@ -5,10 +5,21 @@
 html {
   scroll-behavior: smooth;
 }
+@layer base {
+  :root {
+    --background: 100 100% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  :dark {
+    --background: 222.2 8% 40.9%;
+    --foreground: 210 40% 98%;
+  }
+}
 
 @layer utilities {
   .side-menu {
-    @apply fixed left-0 top-0 z-50 flex h-screen max-w-[300px] flex-col justify-between overflow-auto py-10 px-[10px]   bg-[#ffffff];
+    @apply fixed left-0 top-0 z-50 flex h-screen max-w-[300px] flex-col justify-between overflow-auto py-10 px-[10px];
   }
 
   .social-icon {

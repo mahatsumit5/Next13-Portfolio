@@ -7,6 +7,8 @@ import { store } from "@/store/useMenuStore";
 import { AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import SideMenu from "@/components/SideMenu";
+import { useState } from "react";
+import { ThemeProvider } from "next-themes";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -19,19 +21,26 @@ const poppins = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
+  const [theme, setTheme] = useState("light");
   return (
     <html lang="en">
-      <body className={`${poppins.className} `}>
+      <body className={`${poppins.className}`}>
         <Provider store={store}>
-          <main className="flex flex-row">
-            <SideMenu />
-            <AnimatePresence>
-              <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
-                <TopMenu /> {children}
-                <Footer />
-              </section>
-            </AnimatePresence>
-          </main>
+          <ThemeProvider
+            enableSystem={true}
+            attribute="class"
+            defaultTheme="light"
+          >
+            <main className="flex flex-row">
+              <SideMenu />
+              <AnimatePresence>
+                <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
+                  <TopMenu /> {children}
+                  <Footer />
+                </section>
+              </AnimatePresence>
+            </main>
+          </ThemeProvider>
         </Provider>
       </body>
     </html>

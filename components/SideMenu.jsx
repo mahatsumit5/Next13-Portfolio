@@ -77,7 +77,7 @@ const SideMenu = () => {
             width: screenSize < 1024 ? "150px" : "300px",
           }}
           transition={{ duration: 0.5 }}
-          className={`side-menu border-r `}
+          className="side-menu border-r dark:bg-slate-700 "
         >
           <div className="flex w-full flex-1 flex-col gap-10 justify-between items-center">
             <div className="flex justify-center items-center flex-col gap-2 rounded-full ">
@@ -88,7 +88,7 @@ const SideMenu = () => {
                 alt="sumit"
                 className="border-solid border-4 border-gray-200 shadow-lg rounded-full"
               />
-              <p className="font-bold text-dark-blue">Sumit Mahat </p>
+              <p className="font-bold ">Sumit Mahat </p>
             </div>
 
             <div>
