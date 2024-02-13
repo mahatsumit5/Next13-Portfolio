@@ -82,7 +82,7 @@ const SideMenu = () => {
           <div className="flex w-full flex-1 flex-col gap-10 justify-between items-center">
             <div className="flex justify-center items-center flex-col gap-2 rounded-full ">
               <Image
-                src="/assets/profile.jpg"
+                src="/assets/profile.JPG"
                 width={200}
                 height={200}
                 alt="sumit"
