@@ -1,12 +1,7 @@
-process.noDeprecation = true;
-
 import { createProjects } from "@/lib/actions/projects.actions";
-import { writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
-import path, { join } from "path";
-import os from "os";
+
 import uploadFile from "@/utils/s3";
-import { upload } from "@/utils/multer";
 export async function POST(req) {
   try {
     const data = await req.formData();
