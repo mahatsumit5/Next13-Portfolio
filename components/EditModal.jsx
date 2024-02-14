@@ -8,7 +8,7 @@ import { AiFillChrome, AiOutlineGithub } from "react-icons/ai";
 import Image from "next/image";
 import Chrome from "../public/chrome.svg";
 import git from "../public/github.svg";
-const CustomModal = () => {
+const EditModal = () => {
   const { currentProject } = useSelector((store) => store.menuStore);
   const { name, description, chrome, image, githubUrl, technologies } =
     currentProject;
@@ -79,4 +79,4 @@ const CustomModal = () => {
   );
 };
 
-export default CustomModal;
+export default EditModal;

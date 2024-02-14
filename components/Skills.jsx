@@ -12,11 +12,11 @@ export const Skills = async () => {
       <div className="max-w-[1250px] mx-auto">
         <SectionTitle title={"Skills"} />
       </div>
-      <div className="grid md:grid-cols-5 gap-5 sm:grid-cols-4 max-xs:grid-cols-2 mt-10 ">
+      <div className="grid md:grid-cols-5 gap-5 sm:grid-cols-4 grid-cols-2  mt-10 ">
         {skills.map((skill) => (
           <div
             key={skill.id}
-            className="p-4 rounded-md text-center flex flex-col items-center hover:shadow-2xl justify-center"
+            className="p-4 shadow-sm rounded-md text-center flex flex-col items-center hover:shadow-2xl justify-center"
           >
             <skill.icon
               className={`text-6xl `}

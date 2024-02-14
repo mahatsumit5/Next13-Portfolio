@@ -22,7 +22,7 @@ const poppins = Montserrat({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className}`}>
+      <body className={poppins.className}>
         <Provider store={store}>
           <ThemeProvider
             enableSystem={true}

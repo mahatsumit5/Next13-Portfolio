@@ -2,17 +2,30 @@ import React, { useState } from "react";
 import { addProjects } from "@/lib/axios";
 import { OurUploadButton } from "../uploader";
 import { createProjects } from "@/lib/actions/projects.actions";
-const ProjectForm = () => {
-  const [form, setForm] = useState({});
+import Image from "next/image";
+const initialState = {
+  name: "",
+  description: "",
+  image: "",
+  chrome: "",
+  githubUrl: "",
+};
+const ProjectForm = ({ setFormToDisplay }) => {
+  const [form, setForm] = useState({
+    name: "",
+  });
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
-  const handleClick = async () => {
+  const handleClick = async (e) => {
     try {
+      ("use server");
+
       const res = await createProjects(form);
       if (res._id) {
         setForm({});
+        setFormToDisplay("ProjectTable");
       }
     } catch (error) {
       console.log(error);
@@ -26,7 +39,7 @@ const ProjectForm = () => {
     >
       <h1 className="text-2xl font-bold ">Add new project.</h1>
       <input
-        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-rose-400 placeholder:text-white text-white active:border-none"
+        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none"
         placeholder="Project Name"
         type="text"
         onChange={handleOnChange}
@@ -34,7 +47,7 @@ const ProjectForm = () => {
         value={form.name}
       />
       <input
-        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-rose-400 placeholder:text-white text-white active:border-none"
+        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none"
         placeholder="Website Url "
         type="url"
         onChange={handleOnChange}
@@ -42,19 +55,27 @@ const ProjectForm = () => {
         value={form.chrome}
       />
       <input
-        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-rose-400 placeholder:text-white text-white active:border-none"
+        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none"
         placeholder="Github Url"
         type="url"
         onChange={handleOnChange}
         name="githubUrl"
         value={form.gthubUrl}
       />
-      <span className="">
+      <span className="relative">
         <OurUploadButton setForm={setForm} form={form} />
+        {form?.image && (
+          <Image
+            src={form.image}
+            alt="selected image"
+            className="rounded-md object-cover absolute inset-0 w-full h-full"
+            fill
+          />
+        )}{" "}
       </span>
 
       <textarea
-        className="  shadow-lg p-3 rounded-lg bg-rose-400 placeholder:text-white text-white active:border-none h-32"
+        className="  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none h-32"
         placeholder="Description"
         type="text"
         onChange={handleOnChange}

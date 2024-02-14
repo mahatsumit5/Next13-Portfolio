@@ -1,4 +1,8 @@
-import { createProjects } from "@/lib/actions/projects.actions";
+import {
+  createProjects,
+  getProjects,
+  deleteProject,
+} from "@/lib/actions/projects.actions";
 import { NextResponse } from "next/server";
 
 import uploadFile from "@/utils/s3";
@@ -33,5 +37,13 @@ export async function POST(req) {
   }
 }
 export async function GET(request) {
-  return NextResponse.json({ msg: "Hello from server" });
+  const projects = await getProjects();
+  return NextResponse.json({ projects });
+}
+
+export async function DELETE(req) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  const response = await deleteProject(id);
+  return NextResponse.json({ deleteItem: response });
 }

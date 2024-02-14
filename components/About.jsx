@@ -18,7 +18,7 @@ const About = () => {
         <div className="mt-7">
           <motion.div
             ref={ref}
-            className="mt-6 text-gray-600 text--[20px] leading-10 text-justify"
+            className="mt-6 text-gray-600 text-[16px] leading-10 text-justify"
             initial={{ x: "-20vw" }}
             animate={{ x: isInView ? 0 : "-20vw" }}
             transition={{ duration: 1 }}

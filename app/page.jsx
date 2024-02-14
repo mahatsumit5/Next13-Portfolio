@@ -8,7 +8,6 @@ import { getProjects } from "@/lib/actions/projects.actions";
 
 const Home = async () => {
   const projects = await getProjects();
-  console.log(projects);
   return (
     <div className="flex flex-col h-full ">
       <Hero />
