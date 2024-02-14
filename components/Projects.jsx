@@ -4,12 +4,22 @@ import ProjectCard from "./ProjectCard";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
 import CustomModal from "./CustomModal";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getActiveProjects } from "../lib/axios";
 
-const Projects = ({ projects }) => {
+const Projects = () => {
+  const [projects, setProjects] = useState([]);
+
   const { isModalOpen } = useSelector((store) => store.menuStore);
-  if (!projects.length) {
-    return <h1 className="px-[40px] text-2xl ">No projects available</h1>;
-  }
+
+  useEffect(() => {
+    async function getData() {
+      const { projects } = await getActiveProjects();
+      setProjects(projects);
+    }
+    getData();
+  }, []);
+
   return (
     <div
       className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"

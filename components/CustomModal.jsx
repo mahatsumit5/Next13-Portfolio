@@ -46,12 +46,12 @@ const CustomModal = () => {
               title="website"
               loading="lazy"
               width={"100%"}
-              height={500}
+              height={400}
               referrerPolicy="unsafe-url"
             ></iframe>
           </span>
           <span>
-            <h3 className="text-justify text-md font-sans pt-5">
+            <h3 className="text-justify text-sm  pt-5 font-normal">
               {description}
             </h3>
             <p className="text-left text-sm font-light">{technologies}</p>

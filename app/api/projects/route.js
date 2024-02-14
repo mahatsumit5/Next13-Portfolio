@@ -1,7 +1,8 @@
 import {
   createProjects,
-  getProjects,
+  getActiveProjects,
   deleteProject,
+  getProjects,
 } from "@/lib/actions/projects.actions";
 import { NextResponse } from "next/server";
 
@@ -37,7 +38,10 @@ export async function POST(req) {
   }
 }
 export async function GET(request) {
-  const projects = await getProjects();
+  const { searchParams } = new URL(request.url);
+  const status = searchParams.get("status");
+  const projects =
+    status === "all" ? await getProjects() : await getActiveProjects();
   return NextResponse.json({ projects });
 }
 

@@ -21,6 +21,9 @@ module.exports = withUt({
         "dark-bg": "#8d99ae",
         "dark-blue": "#2b2d42",
       },
+      backgroundImage: {
+        "admin-svg": "url('/triangle.svg')",
+      },
     },
   },
   plugins: [],
