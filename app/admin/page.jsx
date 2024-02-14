@@ -10,6 +10,7 @@ const page = () => {
   const { isModalOpen } = useSelector((store) => store.menuStore);
   const [formToDisplay, setFormToDisplay] = useState("login");
   const router = useRouter();
+
   // Redirect to login if user is already logged in
   useEffect(() => {
     const id = localStorage.getItem("id");
@@ -22,7 +23,12 @@ const page = () => {
 
   const form = {
     login: <LoginForm setFormToDisplay={setFormToDisplay} />,
-    Projects: <ProjectForm setFormToDisplay={setFormToDisplay} />,
+    Projects: (
+      <ProjectForm
+        setFormToDisplay={setFormToDisplay}
+        title="Create new project"
+      />
+    ),
     ProjectTable: <CustomTable />,
     Skills: <>this is skills</>,
   };

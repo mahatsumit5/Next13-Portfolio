@@ -3,6 +3,8 @@ import { addProjects } from "@/lib/axios";
 import { OurUploadButton } from "../uploader";
 import { createProjects } from "@/lib/actions/projects.actions";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 const initialState = {
   name: "",
   description: "",
@@ -10,10 +12,9 @@ const initialState = {
   chrome: "",
   githubUrl: "",
 };
-const ProjectForm = ({ setFormToDisplay }) => {
-  const [form, setForm] = useState({
-    name: "",
-  });
+const ProjectForm = ({ setFormToDisplay, title }) => {
+  const { currentProject } = useSelector((store) => store.menuStore);
+  const [form, setForm] = useState(currentProject || initialState);
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -32,14 +33,16 @@ const ProjectForm = ({ setFormToDisplay }) => {
     }
   };
   return (
-    <form
+    <motion.form
       action={handleClick}
-      className=" shadow-xl p-6 rounded-xl flex flex-col gap-5 w-[350px] md:w-[500px] border-1"
-      method="post"
+      className=" w-full shadow-xl p-6 rounded-xl flex flex-col gap-5  md:w-[500px] border-1"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
-      <h1 className="text-2xl font-bold ">Add new project.</h1>
+      <h1 className="text-2xl font-bold ">{title}</h1>
       <input
-        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none"
+        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
         placeholder="Project Name"
         type="text"
         onChange={handleOnChange}
@@ -47,7 +50,7 @@ const ProjectForm = ({ setFormToDisplay }) => {
         value={form.name}
       />
       <input
-        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none"
+        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
         placeholder="Website Url "
         type="url"
         onChange={handleOnChange}
@@ -55,12 +58,12 @@ const ProjectForm = ({ setFormToDisplay }) => {
         value={form.chrome}
       />
       <input
-        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none"
+        className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
         placeholder="Github Url"
         type="url"
         onChange={handleOnChange}
         name="githubUrl"
-        value={form.gthubUrl}
+        value={form.githubUrl}
       />
       <span className="relative">
         <OurUploadButton setForm={setForm} form={form} />
@@ -75,7 +78,7 @@ const ProjectForm = ({ setFormToDisplay }) => {
       </span>
 
       <textarea
-        className="  shadow-lg p-3 rounded-lg bg-slate-300 placeholder:text-white text-white active:border-none h-32"
+        className="  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none h-32"
         placeholder="Description"
         type="text"
         onChange={handleOnChange}
@@ -88,7 +91,7 @@ const ProjectForm = ({ setFormToDisplay }) => {
       >
         Submit
       </button>
-    </form>
+    </motion.form>
   );
 };
 

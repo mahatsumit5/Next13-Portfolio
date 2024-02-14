@@ -5,9 +5,11 @@ import Chrome from "../public/chrome.svg";
 import git from "../public/github.svg";
 import { useDispatch } from "react-redux";
 import { setModal } from "@/redux/useMenuSlice";
+import EditModal from "./EditModal";
+import ProjectForm from "./form/ProjectForm";
+import { setEditModal } from "../redux/useMenuSlice";
 
 export default function CustomTable() {
-  const theme = localStorage.getItem("theme");
   const dispatch = useDispatch();
   const [projects, setProjects] = useState([]);
   useEffect(() => {
@@ -19,13 +21,25 @@ export default function CustomTable() {
     getData();
   }, []);
 
-  function handleModelOpen(item) {
-    dispatch(
-      setModal({
-        show: true,
-        ...item,
-      })
-    );
+  function handleModelOpen(item, type) {
+    switch (type) {
+      case "edit":
+        return dispatch(
+          setEditModal({
+            show: true,
+            ...item,
+          })
+        );
+      case "view":
+        return dispatch(
+          setModal({
+            show: true,
+            ...item,
+          })
+        );
+      default:
+        break;
+    }
   }
 
   async function handleDelete(id) {
@@ -33,7 +47,7 @@ export default function CustomTable() {
   }
   return (
     <div className=" relative overflow-x-auto ">
-      <table className="   w-[1220px]  bg-white dark:bg-slate-950 shadow-xl table-fixed overflow-scroll ">
+      <table className="   max-w-7xl  bg-white dark:bg-slate-950 shadow-xl table-fixed overflow-scroll ">
         <thead className="bg-slate-300 text-left">
           <tr className="border-2">
             <th className="p-5 w-[80px] border-2">Status</th>
@@ -98,12 +112,17 @@ export default function CustomTable() {
                   <button
                     className="p-2 rounded-lg bg-purple-500 text-white font-bold"
                     onClick={() => {
-                      handleModelOpen(item);
+                      handleModelOpen(item, "view");
                     }}
                   >
                     View
                   </button>
-                  <button className="p-2 rounded-lg bg-green-300 text-black font-bold">
+                  <button
+                    className="p-2 rounded-lg bg-green-300 text-black font-bold"
+                    onClick={() => {
+                      handleModelOpen(item, "edit");
+                    }}
+                  >
                     Edit
                   </button>
                   <button
@@ -120,6 +139,9 @@ export default function CustomTable() {
           })}
         </tbody>
       </table>
+      <EditModal>
+        <ProjectForm title={"Edit project"} />
+      </EditModal>
     </div>
   );
 }
