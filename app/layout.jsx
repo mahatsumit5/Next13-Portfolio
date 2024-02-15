@@ -24,24 +24,16 @@ const poppins = Montserrat({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} `}>
+      <body className={poppins.className}>
         <Provider store={store}>
-          <ThemeProvider
-            enableSystem={true}
-            attribute="class"
-            defaultTheme="light"
-          >
-            <main className="flex flex-row">
-              <SideMenu />
-              <AnimatePresence>
-                <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
-                  <TopMenu /> {children}
-                  <Footer />
-                </section>
-                <Toast />
-              </AnimatePresence>
-            </main>
-          </ThemeProvider>
+          <main className="flex flex-row">
+            <SideMenu />
+            <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
+              <TopMenu /> {children}
+              <Footer />
+            </section>
+            <Toast />
+          </main>
         </Provider>
       </body>
     </html>

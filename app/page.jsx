@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActiveProjectsAction } from "../actions/projects.actions";
 const Home = () => {
   const dispatch = useDispatch();
-  const {} = useSelector((state) => state.menustore); // just to make sure the store is initialized
   useEffect(() => {
     dispatch(getActiveProjectsAction());
   }, []);

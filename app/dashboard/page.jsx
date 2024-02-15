@@ -12,7 +12,6 @@ export default function page() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [componentsState, setComponents] = useState("ProjectTable");
-  const [cookies, setCookies, removeCookie] = useCookies(["token"]);
   const components = {
     ProjectTable: <CustomTable />,
     Skills: <>this is skills</>,
@@ -60,17 +59,6 @@ export default function page() {
             New project
           </button>
         </span>
-        {/* <span className="p-5">
-          <button
-            className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
-            onClick={() => {
-              removeCookie("token");
-              router.push("/login");
-            }}
-          >
-            Logout
-          </button>
-        </span> */}
       </div>
       <div className="min-h-screen  flex justify-center">
         {components[componentsState]}

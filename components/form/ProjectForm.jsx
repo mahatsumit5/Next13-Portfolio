@@ -72,7 +72,7 @@ const ProjectForm = () => {
     <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       <motion.form
         action={handleClick}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-scroll"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -122,6 +122,7 @@ const ProjectForm = () => {
           onChange={handleOnChange}
           name="name"
           value={form.name}
+          required
         />
         <input
           className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
@@ -130,6 +131,7 @@ const ProjectForm = () => {
           onChange={handleOnChange}
           name="chrome"
           value={form.chrome}
+          required
         />
         <input
           className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
@@ -138,6 +140,7 @@ const ProjectForm = () => {
           onChange={handleOnChange}
           name="githubUrl"
           value={form.githubUrl}
+          required
         />
         <textarea
           className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none h-32"
@@ -146,6 +149,7 @@ const ProjectForm = () => {
           onChange={handleOnChange}
           name="description"
           value={form.description}
+          rows={8}
           required
         />
         <span className="relative">
