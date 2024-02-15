@@ -17,7 +17,7 @@ const SideMenu = () => {
   const { isOpen } = useSelector((store) => store.menuStore);
   const [activeLink, setActiveLink] = useState(sidebarMenuLinks[0]);
   const [cookies, setCookies, removeCookie] = useCookies(["token"]);
-  console.log(cookies);
+  console.log({});
   const handleLinkclick = (link) => {
     setActiveLink(link);
   };
