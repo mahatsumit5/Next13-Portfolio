@@ -4,8 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setModal } from "@/redux/useMenuSlice";
-import internet from "../public/internet.svg";
-import Image from "next/image";
+
 const ProjectCard = ({
   name,
   githubUrl,
@@ -22,6 +21,7 @@ const ProjectCard = ({
     dispatch(
       setModal({
         show: true,
+        type: "view",
         name,
         githubUrl,
         image,

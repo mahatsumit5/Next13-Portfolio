@@ -2,15 +2,16 @@
 import ProjectCard from "./ProjectCard";
 // import { projects } from "@/constants/projects";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
-import CustomModal from "./CustomModal";
+import Modal from "./modal/Modal";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getActiveProjects } from "../lib/axios";
+import View from "./modal/view";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
-  const { isModalOpen } = useSelector((store) => store.menuStore);
+  const { viewModal } = useSelector((store) => store.menuStore);
 
   useEffect(() => {
     async function getData() {
@@ -40,7 +41,11 @@ const Projects = () => {
               technologies={project.technologies}
             />
           ))}
-          {isModalOpen && <CustomModal />}
+          {viewModal && (
+            <Modal>
+              <View />
+            </Modal>
+          )}
         </div>
       </div>
     </div>

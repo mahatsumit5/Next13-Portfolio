@@ -1,17 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const PrivatePage = ({ children }) => {
-  const router = useRouter();
-  const id = localStorage.getItem("id");
+  const [id, setId] = useState(null);
   console.log(id);
+  const router = useRouter();
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    setId(id);
+  }, []);
 
-  if (!id) {
-    return router.push("/");
-  }
-  return <div>{children}</div>;
+  return id ? children : router.push("/");
 };
 
 export default PrivatePage;

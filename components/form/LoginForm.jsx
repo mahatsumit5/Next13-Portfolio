@@ -1,17 +1,28 @@
 import { loginUser } from "@/lib/axios";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner";
+import { useCookies } from "react-cookie";
 function LoginForm({ router }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [cookies, setCookies, removeCookie] = useCookies(["token"]);
+
+  useEffect(() => {
+    if (!cookies?.token) {
+      return;
+    } else {
+      router.push("/dashboard");
+    }
+  }, []);
   const handleOnSubmit = async () => {
     setLoading(true);
     const pending = loginUser(form);
     const { status, user, message } = await pending;
     setLoading(false);
+
     if (user?._id && status === "success") {
-      localStorage.setItem("id", JSON.stringify(user._id));
+      setCookies("token", user._id, { path: "/" });
       router.push("/dashboard");
     }
   };

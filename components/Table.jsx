@@ -3,15 +3,20 @@ import { deleteProject, getProjects } from "../lib/axios";
 import Image from "next/image";
 import Chrome from "../public/chrome.svg";
 import git from "../public/github.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "@/redux/useMenuSlice";
-import EditModal from "./EditModal";
+import Modal from "./modal/Modal";
 import ProjectForm from "./form/ProjectForm";
-import { setEditModal } from "../redux/useMenuSlice";
+import DeleteConfirmation from "./modal/DeleteConfirmation";
+import View from "./modal/view";
 
 export default function CustomTable() {
   const dispatch = useDispatch();
   const [projects, setProjects] = useState([]);
+  const { editModal, deleteModal, viewModal } = useSelector(
+    (store) => store.menuStore
+  );
+
   useEffect(() => {
     async function getData() {
       const { projects } = await getProjects();
@@ -24,24 +29,28 @@ export default function CustomTable() {
   function handleModelOpen(item, type) {
     switch (type) {
       case "edit":
-        return dispatch(
-          setEditModal({
+        dispatch(
+          setModal({
             show: true,
+            type,
             ...item,
           })
         );
+        return;
       case "view":
-        console.log(item, type);
-        return dispatch(
+        dispatch(
           setModal({
             show: true,
+            type,
             ...item,
           })
         );
       case "delete":
-        return dispatch(
+        dispatch(
           setModal({
             show: true,
+            type,
+            ...item,
           })
         );
       default:
@@ -49,9 +58,6 @@ export default function CustomTable() {
     }
   }
 
-  async function handleDelete(id) {
-    await deleteProject(id);
-  }
   return (
     <div className=" p-2 overflow-x-auto relative ">
       <table className="   max-w-6xl  bg-white dark:bg-slate-950 shadow-xl table-fixed overflow-scroll ">
@@ -145,7 +151,7 @@ export default function CustomTable() {
                   <button
                     className="p-2 rounded-lg bg-red-600 text-white font-bold"
                     onClick={() => {
-                      handleModelOpen(item._id, "delete");
+                      handleModelOpen(item, "delete");
                     }}
                   >
                     Delete
@@ -156,12 +162,21 @@ export default function CustomTable() {
           })}
         </tbody>
       </table>
-      <EditModal type={"delete"}>
-        <h1>Are you sure want to delete this projects?</h1>
-      </EditModal>
-      <EditModal type={"edit"}>
-        <ProjectForm title={"Edit project"} />
-      </EditModal>
+      {deleteModal && (
+        <Modal>
+          <DeleteConfirmation />
+        </Modal>
+      )}
+      {editModal && (
+        <Modal>
+          <ProjectForm title={"Edit project"} />
+        </Modal>
+      )}
+      {viewModal && (
+        <Modal>
+          <View />
+        </Modal>
+      )}
     </div>
   );
 }

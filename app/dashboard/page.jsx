@@ -2,15 +2,14 @@
 import React, { useState } from "react";
 import ProjectForm from "@/components/form/ProjectForm";
 import CustomTable from "@/components/Table";
-import { useSelector } from "react-redux";
 import PrivatePage from "../../components/PrivatePage";
 import { useRouter } from "next/navigation";
-import CustomModal from "@/components/CustomModal";
+import { useCookies } from "react-cookie";
+
 export default function page() {
   const router = useRouter();
   const [componentsState, setComponents] = useState("ProjectTable");
-  const { isModalOpen } = useSelector((store) => store.menuStore);
-
+  const [cookies, setCookies, removeCookie] = useCookies(["token"]);
   const components = {
     Projects: (
       <ProjectForm setComponents={setComponents} title="Create new project" />
@@ -19,7 +18,7 @@ export default function page() {
     Skills: <>this is skills</>,
   };
   return (
-    <PrivatePage>
+    <>
       <div className="flex justify-between">
         <span className="flex justify-start w-full gap-3 p-5 ">
           <button
@@ -59,7 +58,7 @@ export default function page() {
           <button
             className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
             onClick={() => {
-              localStorage.removeItem("id");
+              removeCookie("token");
               router.push("/login");
             }}
           >
@@ -70,7 +69,6 @@ export default function page() {
       <div className="min-h-screen  flex justify-center">
         {components[componentsState]}
       </div>
-      {isModalOpen && <CustomModal />}
-    </PrivatePage>
+    </>
   );
 }
