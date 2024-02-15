@@ -17,7 +17,7 @@ export const OurUploadButton = ({ setForm, form }) => (
     onBeforeUploadBegin={(files) => {
       // Preprocess files before uploading (e.g. rename them)
       return files.map(
-        (f) => new File([f], "renamed-" + f.name, { type: f.type })
+        (f) => new File([f], new Date() + f.name, { type: f.type })
       );
     }}
     onUploadBegin={(name) => {

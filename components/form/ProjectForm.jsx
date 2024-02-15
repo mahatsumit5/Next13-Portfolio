@@ -18,7 +18,6 @@ const initialState = {
 const ProjectForm = ({ setFormToDisplay, title }) => {
   const dispatch = useDispatch();
   const { currentProject } = useSelector((store) => store.menuStore);
-  console.log(currentProject);
   const [form, setForm] = useState(
     currentProject?._id ? currentProject : initialState
   );
@@ -31,7 +30,6 @@ const ProjectForm = ({ setFormToDisplay, title }) => {
       ("use server");
       if (currentProject?._id) {
         const response = await updateProjects(form);
-        console.log(response);
         if (response?._id) {
           dispatch(resetModal());
           setForm({});
@@ -67,7 +65,6 @@ const ProjectForm = ({ setFormToDisplay, title }) => {
               const { checked } = e.target;
               setForm({ ...form, status: checked ? "Active" : "Inactive" });
             }}
-            value={form.status === "Active" ? true : false}
             defaultChecked={form.status === "Active" ? true : false}
             defaultValue={form.status === "Active" ? true : false}
           />
