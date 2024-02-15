@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 import Chrome from "@/public/chrome.svg";
 import git from "@/public/github.svg";
-const View = () => {
+const ProjectView = () => {
   const { currentProject } = useSelector((store) => store.menuStore);
   const { name, description, chrome, image, githubUrl, technologies } =
     currentProject;
@@ -49,4 +49,4 @@ const View = () => {
   );
 };
 
-export default View;
+export default ProjectView;

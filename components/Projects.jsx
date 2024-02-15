@@ -6,7 +6,7 @@ import Modal from "./modal/Modal";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getActiveProjects } from "../lib/axios";
-import View from "./modal/view";
+import ProjectView from "./modal/ProjectView";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -43,7 +43,7 @@ const Projects = () => {
           ))}
           {viewModal && (
             <Modal>
-              <View />
+              <ProjectView />
             </Modal>
           )}
         </div>

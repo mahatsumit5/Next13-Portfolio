@@ -16,7 +16,6 @@ const modalSlice = createSlice({
     },
     setModal: (state, { payload }) => {
       const { show, type, ...rest } = payload;
-      console.log(rest);
       state.currentProject = rest;
       switch (type) {
         case "view":

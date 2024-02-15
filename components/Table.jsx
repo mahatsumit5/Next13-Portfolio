@@ -8,7 +8,7 @@ import { setModal } from "@/redux/useMenuSlice";
 import Modal from "./modal/Modal";
 import ProjectForm from "./form/ProjectForm";
 import DeleteConfirmation from "./modal/DeleteConfirmation";
-import View from "./modal/view";
+import ProjectView from "./modal/ProjectView";
 
 export default function CustomTable() {
   const dispatch = useDispatch();
@@ -95,6 +95,7 @@ export default function CustomTable() {
                       alt={item.name}
                       fill
                       className="object-cover overflow-hidden"
+                      sizes="1024px"
                     />
                   </div>
                 </td>
@@ -174,7 +175,7 @@ export default function CustomTable() {
       )}
       {viewModal && (
         <Modal>
-          <View />
+          <ProjectView />
         </Modal>
       )}
     </div>
