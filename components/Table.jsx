@@ -9,19 +9,18 @@ import Modal from "./modal/Modal";
 import ProjectForm from "./form/ProjectForm";
 import DeleteConfirmation from "./modal/DeleteConfirmation";
 import ProjectView from "./modal/ProjectView";
+import { getProjectsAction } from "../actions/projects.actions";
 
 export default function CustomTable() {
   const dispatch = useDispatch();
-  const [projects, setProjects] = useState([]);
   const { editModal, deleteModal, viewModal } = useSelector(
     (store) => store.menuStore
   );
+  const { projects } = useSelector((store) => store.projectStore);
 
   useEffect(() => {
     async function getData() {
-      const { projects } = await getProjects();
-
-      setProjects(projects);
+      dispatch(getProjectsAction());
     }
     getData();
   }, []);

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { addProjects } from "@/lib/axios";
+
 import { OurUploadButton } from "../uploader";
-import { createProjects } from "@/lib/actions/projects.actions";
+import { createProjects, updateProjects } from "@/lib/actions/projects.actions";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { updateProjects } from "../../lib/actions/projects.actions";
 import { resetModal } from "../../redux/useMenuSlice";
+import { openToast } from "../../redux/toastSlice";
+import {
+  getActiveProjectsAction,
+  getProjectsAction,
+} from "../../actions/projects.actions";
 const initialState = {
   name: "",
   description: "",
@@ -15,7 +19,7 @@ const initialState = {
   githubUrl: "",
   status: "Inactive",
 };
-const ProjectForm = ({ setFormToDisplay, title }) => {
+const ProjectForm = ({ setComponents, title }) => {
   const dispatch = useDispatch();
   const { currentProject } = useSelector((store) => store.menuStore);
   const [form, setForm] = useState(
@@ -28,24 +32,33 @@ const ProjectForm = ({ setFormToDisplay, title }) => {
   const handleClick = async (e) => {
     try {
       ("use server");
-      if (currentProject?._id) {
-        const response = await updateProjects(form);
-        if (response?._id) {
-          dispatch(resetModal());
-          setForm({});
-          window.location.reload();
-        }
-        return;
-      }
-      const res = await createProjects(form);
-      if (res._id) {
-        setForm({});
-        setFormToDisplay("ProjectTable");
+      const { status, message, data } = currentProject?._id
+        ? await updateProjects(form)
+        : await createProjects(form);
+      dispatch(
+        openToast({
+          variant: status,
+          message: message,
+        })
+      );
+      if (status === "success") {
+        resetfunction();
       }
     } catch (error) {
-      console.log(error);
+      dispatch(
+        openToast({
+          variant: "error",
+          message: error.message,
+        })
+      );
     }
   };
+  function resetfunction() {
+    dispatch(resetModal());
+    setForm({});
+    dispatch(getProjectsAction());
+    dispatch(getActiveProjectsAction());
+  }
   return (
     <motion.form
       action={handleClick}
@@ -104,7 +117,7 @@ const ProjectForm = ({ setFormToDisplay, title }) => {
         value={form.githubUrl}
       />
       <span className="relative">
-        <OurUploadButton setForm={setForm} form={form} />
+        <OurUploadButton setForm={setForm} form={form} dispatch={dispatch} />
         {title !== "Edit project" && form?.image && (
           <Image
             src={form.image}

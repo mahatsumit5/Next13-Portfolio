@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import SideMenu from "@/components/SideMenu";
 import { ThemeProvider } from "next-themes";
 import TopMenu from "@/components/TopMenu";
+import Toast from "@/components/toast/Toast";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
                   <TopMenu /> {children}
                   <Footer />
                 </section>
+                <Toast />
               </AnimatePresence>
             </main>
           </ThemeProvider>

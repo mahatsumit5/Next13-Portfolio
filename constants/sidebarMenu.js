@@ -1,6 +1,6 @@
 export const sidebarMenuLinks = [
   {
-    route: "#home",
+    route: "/#home",
     label: "Home",
     sectionId: "home",
     duration: 0.2,
