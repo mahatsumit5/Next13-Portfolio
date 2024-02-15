@@ -6,18 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import Socialcons from "./social/Socialcons";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "@/redux/useMenuSlice";
-import { useCookies } from "react-cookie";
-import { useRouter } from "next/navigation";
 
 const SideMenu = () => {
-  const router = useRouter();
   const [scrollY, setScrollY] = useState(0);
   const [screenSize, setScreenSize] = useState(null);
   const dispatch = useDispatch();
   const { isOpen } = useSelector((store) => store.menuStore);
   const [activeLink, setActiveLink] = useState(sidebarMenuLinks[0]);
-  const [cookies, setCookies, removeCookie] = useCookies(["token"]);
-  console.log({});
+
   const handleLinkclick = (link) => {
     setActiveLink(link);
   };
@@ -118,21 +114,6 @@ const SideMenu = () => {
                   </motion.a>
                 );
               })}
-              {cookies?.token && (
-                <motion.button
-                  className="relative flex justify-center items-center rounded-lg p-3 font-extrabold"
-                  initial={{ x: "-100vw" }}
-                  animate={{ x: 0 }}
-                  transition={{ duration: 1.2 }}
-                  whileHover={{ scale: 1.2 }}
-                  onClick={() => {
-                    removeCookie("token");
-                    router.push("/login");
-                  }}
-                >
-                  Logout
-                </motion.button>
-              )}
             </div>
             <div className="flex items-center flex-col justify-center text-center">
               <div className="flex flex-col lg:flex-row items-center gap-4 mb-3">
