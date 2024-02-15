@@ -13,9 +13,7 @@ import { getProjectsAction } from "../actions/projects.actions";
 
 export default function CustomTable() {
   const dispatch = useDispatch();
-  const { editModal, deleteModal, viewModal } = useSelector(
-    (store) => store.menuStore
-  );
+  const { deleteModal, viewModal } = useSelector((store) => store.menuStore);
   const { projects } = useSelector((store) => store.projectStore);
 
   useEffect(() => {
@@ -32,6 +30,7 @@ export default function CustomTable() {
           setModal({
             show: true,
             type,
+
             ...item,
           })
         );
@@ -167,11 +166,7 @@ export default function CustomTable() {
           <DeleteConfirmation />
         </Modal>
       )}
-      {editModal && (
-        <Modal>
-          <ProjectForm title={"Edit project"} />
-        </Modal>
-      )}
+
       {viewModal && (
         <Modal>
           <ProjectView />

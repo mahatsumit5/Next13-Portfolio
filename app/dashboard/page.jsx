@@ -5,21 +5,22 @@ import CustomTable from "@/components/Table";
 import PrivatePage from "../../components/PrivatePage";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
+import { setModal } from "@/redux/useMenuSlice";
+import { useDispatch } from "react-redux";
 
 export default function page() {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [componentsState, setComponents] = useState("ProjectTable");
   const [cookies, setCookies, removeCookie] = useCookies(["token"]);
   const components = {
-    Projects: (
-      <ProjectForm setComponents={setComponents} title="Create new project" />
-    ),
     ProjectTable: <CustomTable />,
     Skills: <>this is skills</>,
   };
+
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between overflow-hidden">
         <span className="flex justify-start w-full gap-3 p-5 ">
           <button
             className="p-1 border-2  border-red-300 text-red-600 rounded-md hover:bg-red-400"
@@ -48,13 +49,18 @@ export default function page() {
           <button
             className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
             onClick={() => {
-              setComponents("Projects");
+              dispatch(
+                setModal({
+                  show: true,
+                  type: "new project",
+                })
+              );
             }}
           >
             New project
           </button>
         </span>
-        <span className="p-5">
+        {/* <span className="p-5">
           <button
             className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
             onClick={() => {
@@ -64,10 +70,11 @@ export default function page() {
           >
             Logout
           </button>
-        </span>
+        </span> */}
       </div>
       <div className="min-h-screen  flex justify-center">
         {components[componentsState]}
+        <ProjectForm />
       </div>
     </>
   );

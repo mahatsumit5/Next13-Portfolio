@@ -3,8 +3,9 @@ const initialState = {
   isOpen: true,
   viewModal: false,
   currentProject: {},
-  editModal: false,
+  formModal: false,
   deleteModal: false,
+  title: "",
 };
 
 const modalSlice = createSlice({
@@ -22,7 +23,12 @@ const modalSlice = createSlice({
           state.viewModal = show;
           return;
         case "edit":
-          state.editModal = show;
+          state.formModal = show;
+          state.title = "Edit project";
+          return;
+        case "new project":
+          state.formModal = show;
+          state.title = "New project";
           return;
 
         case "delete":
@@ -37,7 +43,7 @@ const modalSlice = createSlice({
     resetModal: (state, { payload }) => {
       state.currentProject = {};
       state.deleteModal = false;
-      state.editModal = false;
+      state.formModal = false;
       state.viewModal = false;
     },
   },

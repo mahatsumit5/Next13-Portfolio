@@ -9,6 +9,7 @@ import SideMenu from "@/components/SideMenu";
 import { ThemeProvider } from "next-themes";
 import TopMenu from "@/components/TopMenu";
 import Toast from "@/components/toast/Toast";
+import { useState } from "react";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ const poppins = Montserrat({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${poppins.className} `}>
         <Provider store={store}>
           <ThemeProvider
             enableSystem={true}

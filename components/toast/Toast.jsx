@@ -15,7 +15,7 @@ const Toast = () => {
 
   setTimeout(() => {
     dispatch(closeToast());
-  }, 3000);
+  }, 6000);
 
   if (!isOpen) {
     return null;
@@ -28,9 +28,9 @@ const Toast = () => {
             animate={{ opacity: 1, top: 10 }}
             transition={{ duration: 0.5 }}
             draggable={true}
-            className={`fixed  ${VariantType[variant]} left-[50%] -translate-x-1/2  z-50 p-2 w-[360px] sm:w-[450px] min-h-[100px] max-h-[400px]   rounded-lg overflow-hidden`}
+            className={`fixed flex  ${VariantType[variant]} left-[50%] -translate-x-1/2  z-50 p-2 w-[360px] sm:w-[450px]  min-h-fit h-auto   rounded-lg `}
           >
-            <span className="absolute h-[50x] top-1 right-2    ">
+            <span className="absolute  top-1 right-2    ">
               <button
                 className={`rounded-full ${VariantType[variant]} p-1 hover:scale-110 transition-all`}
                 onClick={() => [dispatch(closeToast())]}
@@ -42,7 +42,7 @@ const Toast = () => {
                 />
               </button>
             </span>
-            <span className={`absolute top-8  text-justify text-md text-white`}>
+            <span className={`mt-5  h-full text-justify text-md text-white`}>
               {message}
             </span>
           </motion.div>

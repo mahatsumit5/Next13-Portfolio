@@ -6,15 +6,16 @@ import Projects from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import TopButton from "@/components/TopButton";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getActiveProjectsAction } from "../actions/projects.actions";
 const Home = () => {
   const dispatch = useDispatch();
+  const {} = useSelector((state) => state.menustore); // just to make sure the store is initialized
   useEffect(() => {
     dispatch(getActiveProjectsAction());
   }, []);
   return (
-    <div className="flex flex-col h-full ">
+    <div className="flex flex-col h-full overflow-hidden">
       <Hero />
       <About />
       <Skills />
