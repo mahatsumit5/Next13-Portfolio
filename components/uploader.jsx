@@ -1,5 +1,5 @@
-import { UploadButton, UploadDropzone } from "@uploadthing/react";
-import { useDispatch } from "react-redux";
+import { UploadDropzone } from "@uploadthing/react";
+
 import { openToast } from "../redux/toastSlice";
 
 export const OurUploadButton = ({ setForm, form, dispatch }) => (

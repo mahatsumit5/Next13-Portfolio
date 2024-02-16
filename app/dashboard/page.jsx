@@ -7,14 +7,14 @@ import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { setModal } from "@/redux/useMenuSlice";
 import { useDispatch } from "react-redux";
-
+import Skills from "@/components/skills/Skills";
 export default function page() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [componentsState, setComponents] = useState("ProjectTable");
+  const [componentsState, setComponents] = useState("Skills");
   const components = {
     ProjectTable: <CustomTable />,
-    Skills: <>this is skills</>,
+    Skills: <Skills />,
   };
 
   return (

@@ -3,7 +3,10 @@ import { loginUser } from "@/lib/axios";
 import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { openToast } from "../../redux/toastSlice";
 function LoginForm({ router }) {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [cookies, setCookies, removeCookie] = useCookies(["token"]);
@@ -17,6 +20,17 @@ function LoginForm({ router }) {
   }, []);
   const handleOnSubmit = async () => {
     setLoading(true);
+    // dispatch(
+    //   openToast({
+    //     variant: "info",
+    //     message: (
+    //       <>
+    //         <Spinner />
+    //       </>
+    //     ),
+    //   })
+    // );
+
     const pending = loginUser(form);
     const { status, user, message } = await pending;
     setLoading(false);
@@ -56,9 +70,9 @@ function LoginForm({ router }) {
       <button
         className="w-full p-2 border-1 rounded-md bg-red-600 disabled:bg-red-300 text-white hover:bg-red-500"
         type="submit"
-        disabled={!form.email || !form.password}
+        disabled={!form.email || !form.password || loading}
       >
-        {loading ? <Spinner /> : "Login"}
+        {loading ? "Loading..." : "Login"}
       </button>
     </form>
   );
