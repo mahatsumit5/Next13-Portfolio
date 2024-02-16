@@ -13,7 +13,7 @@ export const OurUploadButton = ({ setForm, form, dispatch }) => (
       dispatch(
         openToast({
           variant: "success",
-          message: "Your image has been uploaded.",
+          message: "Upload Successfull",
         })
       );
     }}

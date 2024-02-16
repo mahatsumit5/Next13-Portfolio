@@ -6,6 +6,7 @@ const initialState = {
   formModal: false,
   deleteModal: false,
   title: "",
+  skillModal: false,
 };
 
 const modalSlice = createSlice({
@@ -30,6 +31,10 @@ const modalSlice = createSlice({
           state.formModal = show;
           state.title = "New project";
           return;
+        case "new skill":
+          state.skillModal = show;
+          state.title = "Add Skills";
+          return;
 
         case "delete":
           state.deleteModal = true;
@@ -45,6 +50,7 @@ const modalSlice = createSlice({
       state.deleteModal = false;
       state.formModal = false;
       state.viewModal = false;
+      state.skillModal = false;
     },
   },
 });

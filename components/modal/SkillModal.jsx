@@ -1,33 +1,64 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetModal } from "../../redux/useMenuSlice";
 import { MdClose } from "react-icons/md";
 import { OurUploadButton } from "../uploader";
+import Image from "next/image";
+import Spinner from "../Spinner";
+import { createSkills } from "../../lib/actions/skills.action";
+import { openToast } from "../../redux/toastSlice";
 const initialState = {
   status: "Inactive",
-  color: "",
   image: "",
   title: "",
 };
-const SkillModal = ({ title }) => {
+const SkillModal = () => {
   const [form, setForm] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const { title, skillModal } = useSelector((state) => state.menuStore);
   const dispatch = useDispatch();
   function handleOnChange(e) {
     const { name, value } = e.target;
 
     setForm({ ...form, [name]: value });
   }
-  function handleClick(e) {
-    console.log(form);
+  async function handleSubmit(e) {
+    try {
+      console.log(form);
+      setLoading(true);
+      ("use server");
+      const { status, message, data } = await createSkills(form);
+      setLoading(false);
+      dispatch(
+        openToast({
+          variant: status,
+          message: message,
+        })
+      );
+      if (status === "success") {
+        dispatch(resetModal());
+      }
+    } catch (error) {}
+  }
+  if (!skillModal) {
+    return null;
   }
   return (
     <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
+      {title !== "Edit project" && form?.image && (
+        <Image
+          src={form.image}
+          alt="selected image"
+          className="rounded-md object-cover absolute inset-0 w-full h-full filter "
+          fill
+        />
+      )}
       <motion.form
         action={(e) => {
-          handleClick(e);
+          handleSubmit(e);
         }}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-auto"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300 gap-2 w-full md:w-[500px] overflow-y-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -82,31 +113,14 @@ const SkillModal = ({ title }) => {
           value={form.title}
           required
         />
-        <label className="font-bold">Color</label>
-        <input
-          className="h-[50px]"
-          type="color"
-          onChange={handleOnChange}
-          name="color"
-          value={form.color}
-          required
-        />
         <span className="relative">
           <OurUploadButton setForm={setForm} form={form} dispatch={dispatch} />
-          {title !== "Edit project" && form?.image && (
-            <Image
-              src={form.image}
-              alt="selected image"
-              className="rounded-md object-cover absolute inset-0 w-full h-full"
-              fill
-            />
-          )}{" "}
         </span>
         <button
           className="w-full p-2 border-1 rounded-md bg-red-600 disabled:bg-red-300 text-white"
           type="submit"
         >
-          Submit
+          {loading ? <Spinner /> : "Submit"}
         </button>
       </motion.form>
     </div>
