@@ -8,7 +8,6 @@ import { getAllSkillsAction } from "../../actions/skills.action";
 const Skills = () => {
   const dispatch = useDispatch();
   const { skills } = useSelector((store) => store.dataStore);
-  console.log(skills);
   useEffect(() => {
     dispatch(getAllSkillsAction());
   }, []);

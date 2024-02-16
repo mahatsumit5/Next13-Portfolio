@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { resetModal } from "../../redux/useMenuSlice";
 import { MdClose } from "react-icons/md";
@@ -65,7 +65,7 @@ const SkillModal = () => {
     return null;
   }
   return (
-    <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
+    <div className="fixed bg-black/80 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-xl ">
       {title !== "Edit project" && form?.image && (
         <Image
           src={form.image ? form.image : currentSkill.image}
@@ -78,7 +78,7 @@ const SkillModal = () => {
         action={(e) => {
           handleSubmit(e);
         }}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300 gap-2 w-full md:w-[500px] overflow-y-auto"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit md:h-fit z-50 transition-all flex flex-col justify-start p-4 rounded-md bg-slate-300 gap-2 w-full md:w-[500px] "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -133,9 +133,22 @@ const SkillModal = () => {
           value={form.title}
           required
         />
-        <span className="relative">
-          <OurUploadButton setForm={setForm} form={form} dispatch={dispatch} />
-        </span>
+        {form.status && form.title && (
+          <AnimatePresence>
+            <motion.span
+              className="relative"
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <OurUploadButton
+                setForm={setForm}
+                form={form}
+                dispatch={dispatch}
+              />
+            </motion.span>
+          </AnimatePresence>
+        )}
         <button
           className="w-full p-2 border-1 rounded-md bg-red-600 disabled:bg-red-300 text-white"
           type="submit"
