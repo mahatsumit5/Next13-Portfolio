@@ -2,11 +2,13 @@ import { skills } from "@/constants/skills";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getActiveSkillsAction } from "../actions/skills.action";
 
-export const Skills = async () => {
+export const Skills = () => {
   const dispatch = useDispatch();
+  const { activeSkills } = useSelector((store) => store.dataStore);
+
   useEffect(() => {
     dispatch(getActiveSkillsAction());
   }, []);
@@ -19,16 +21,13 @@ export const Skills = async () => {
         <SectionTitle title={"Skills"} />
       </div>
       <div className="grid md:grid-cols-5 gap-5 sm:grid-cols-4 grid-cols-2  mt-10 ">
-        {skills.map((skill) => (
+        {activeSkills.map((skill) => (
           <div
             key={skill.id}
-            className="p-4 shadow-sm rounded-md text-center flex flex-col items-center hover:shadow-2xl justify-center"
+            className="p-4 shadow-md rounded-lg text-center flex flex-col items-center hover:animate-pulse hover:bg-slate-200  justify-center"
           >
-            <skill.icon
-              className={`text-6xl `}
-              style={{ color: `${skill.color}` }}
-            />
-            <span>{skill.title}</span>
+            <Image src={skill.image} alt={skill.title} height={80} width={80} />
+            <span className="font-bold">{skill.title}</span>
           </div>
         ))}
       </div>

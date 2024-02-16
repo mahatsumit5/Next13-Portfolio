@@ -54,6 +54,12 @@ const SkillModal = () => {
         dispatch(getActiveSkillsAction());
       }
     } catch (error) {}
+    dispatch(
+      openToast({
+        variant: "error",
+        message: error.message,
+      })
+    );
   }
   if (!skillModal) {
     return null;
