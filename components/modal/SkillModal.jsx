@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { resetModal } from "../../redux/useMenuSlice";
@@ -8,15 +8,27 @@ import Image from "next/image";
 import Spinner from "../Spinner";
 import { createSkills } from "../../lib/actions/skills.action";
 import { openToast } from "../../redux/toastSlice";
+import {
+  getActiveSkillsAction,
+  getAllSkillsAction,
+} from "../../actions/skills.action";
 const initialState = {
-  status: "Inactive",
+  status: "",
   image: "",
   title: "",
 };
 const SkillModal = () => {
-  const [form, setForm] = useState(initialState);
+  const { title, skillModal, currentSkill } = useSelector(
+    (state) => state.menuStore
+  );
+  const [form, setForm] = useState(
+    currentSkill?._id ? currentSkill : initialState
+  );
+  useEffect(() => {
+    setForm(currentSkill);
+  }, [currentSkill]);
   const [loading, setLoading] = useState(false);
-  const { title, skillModal } = useSelector((state) => state.menuStore);
+
   const dispatch = useDispatch();
   function handleOnChange(e) {
     const { name, value } = e.target;
@@ -25,8 +37,8 @@ const SkillModal = () => {
   }
   async function handleSubmit(e) {
     try {
-      console.log(form);
       setLoading(true);
+
       ("use server");
       const { status, message, data } = await createSkills(form);
       setLoading(false);
@@ -38,6 +50,8 @@ const SkillModal = () => {
       );
       if (status === "success") {
         dispatch(resetModal());
+        dispatch(getAllSkillsAction());
+        dispatch(getActiveSkillsAction());
       }
     } catch (error) {}
   }
@@ -48,7 +62,7 @@ const SkillModal = () => {
     <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       {title !== "Edit project" && form?.image && (
         <Image
-          src={form.image}
+          src={form.image ? form.image : currentSkill.image}
           alt="selected image"
           className="rounded-md object-cover absolute inset-0 w-full h-full filter "
           fill
@@ -89,8 +103,8 @@ const SkillModal = () => {
                 const { checked } = e.target;
                 setForm({ ...form, status: checked ? "Active" : "Inactive" });
               }}
-              defaultChecked={form.status === "Active" ? true : false}
-              defaultValue={form.status === "Active" ? true : false}
+              defaultChecked={currentSkill?.status === "Active" ? true : false}
+              // defaultValue={form.status === "Active" ? true : false}
             />
             <label
               htmlFor="switch-component"
