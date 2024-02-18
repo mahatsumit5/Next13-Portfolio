@@ -4,7 +4,9 @@ const initialState = {
   viewModal: false,
   currentProject: {},
   formModal: false,
-  deleteModal: false,
+  deleteModal: {
+    isOpen: false,
+  },
   title: "",
   skillModal: false,
   currentSkill: {},
@@ -18,7 +20,8 @@ const modalSlice = createSlice({
       state.isOpen = payload;
     },
     setModal: (state, { payload }) => {
-      const { show, type, ...rest } = payload;
+      console.log(payload);
+      const { show, type, title, subtitle, ...rest } = payload;
       state.currentProject = rest;
 
       switch (type) {
@@ -45,7 +48,10 @@ const modalSlice = createSlice({
           return;
 
         case "delete":
-          state.deleteModal = true;
+          console.log(rest);
+          state.deleteModal.isOpen = true;
+          state.deleteModal.title = title;
+          state.deleteModal.subtitle = subtitle;
           return;
 
         default:
@@ -60,6 +66,8 @@ const modalSlice = createSlice({
       state.viewModal = false;
       state.skillModal = false;
       state.currentSkill = {};
+      state.deleteModal = {};
+      state.title = "";
     },
   },
 });

@@ -6,7 +6,7 @@ import { MdClose } from "react-icons/md";
 import { OurUploadButton } from "../uploader";
 import Image from "next/image";
 import Spinner from "../Spinner";
-import { createSkills } from "../../lib/actions/skills.action";
+import { createSkills, updateSKill } from "../../lib/actions/skills.action";
 import { openToast } from "../../redux/toastSlice";
 import {
   getActiveSkillsAction,
@@ -40,7 +40,9 @@ const SkillModal = () => {
       setLoading(true);
 
       ("use server");
-      const { status, message, data } = await createSkills(form);
+      const { status, message, data } = currentSkill?._id
+        ? await updateSKill(form)
+        : await createSkills(form);
       setLoading(false);
       dispatch(
         openToast({
@@ -53,13 +55,14 @@ const SkillModal = () => {
         dispatch(getAllSkillsAction());
         dispatch(getActiveSkillsAction());
       }
-    } catch (error) {}
-    dispatch(
-      openToast({
-        variant: "error",
-        message: error.message,
-      })
-    );
+    } catch (error) {
+      dispatch(
+        openToast({
+          variant: "error",
+          message: error.message,
+        })
+      );
+    }
   }
   if (!skillModal) {
     return null;

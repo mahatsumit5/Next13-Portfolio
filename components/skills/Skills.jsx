@@ -12,13 +12,29 @@ const Skills = () => {
     dispatch(getAllSkillsAction());
   }, []);
   function openModal(item, type) {
-    dispatch(
-      setModal({
-        show: true,
-        type,
-        ...item,
-      })
-    );
+    switch (type) {
+      case "new skill":
+        return dispatch(setModal({ show: true, type, data: item }));
+      case "edit skill":
+        return dispatch(setModal({ show: true, type, ...item }));
+      case "delete":
+        return dispatch(
+          setModal({
+            show: true,
+            type: "delete",
+            title: "Are you sure want to delete this item?",
+            subtitle: "This action cannot be undone.",
+            ...item,
+          })
+        );
+    }
+    // dispatch(
+    //   setModal({
+    //     show: true,
+    //     type,
+    //     ...item,
+    //   })
+    // );
   }
   return (
     <div className="flex flex-col items-start gap-5 bg-admin-svg w-full p-2">
@@ -94,9 +110,9 @@ const Skills = () => {
               </button>
               <button
                 className=" hover:scale-110 transition-all p-2 rounded-lg bg-red-600 text-white font-bold"
-                // onClick={() => {
-                //   handleModelOpen(item, "delete");
-                // }}
+                onClick={() => {
+                  openModal(item, "delete");
+                }}
               >
                 Delete
               </button>

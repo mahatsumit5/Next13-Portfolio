@@ -6,12 +6,15 @@ import PrivatePage from "../../components/PrivatePage";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { setModal } from "@/redux/useMenuSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Skills from "@/components/skills/Skills";
+import Modal from "../../components/modal/Modal";
+import DeleteConfirmation from "../../components/modal/DeleteConfirmation";
 export default function page() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [componentsState, setComponents] = useState("Skills");
+  const { deleteModal } = useSelector((store) => store.menuStore);
   const components = {
     ProjectTable: <CustomTable />,
     Skills: <Skills />,
@@ -63,6 +66,11 @@ export default function page() {
       <div className="min-h-screen  flex justify-center">
         {components[componentsState]}
         <ProjectForm />
+        {deleteModal.isOpen && (
+          <Modal>
+            <DeleteConfirmation />
+          </Modal>
+        )}
       </div>
     </>
   );

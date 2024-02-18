@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  deleteSkillsById,
   getActiveSkills,
   getAllSkills,
 } from "../../../lib/actions/skills.action";
@@ -12,9 +13,9 @@ export async function GET(request) {
   return NextResponse.json({ skills });
 }
 
-// export async function DELETE(req) {
-//   const { searchParams } = new URL(req.url);
-//   const id = searchParams.get("id");
-//   const response = await deleteProject(id);
-//   return NextResponse.json({ deleteItem: response });
-// }
+export async function DELETE(req) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  const response = await deleteSkillsById(id);
+  return NextResponse.json({ deleteItem: response });
+}

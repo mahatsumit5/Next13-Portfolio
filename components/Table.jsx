@@ -48,6 +48,8 @@ export default function CustomTable() {
           setModal({
             show: true,
             type,
+            title: "Are you sure want to delete this project?",
+            subtitle: "This action cannot be undone.",
             ...item,
           })
         );
@@ -161,11 +163,6 @@ export default function CustomTable() {
           })}
         </tbody>
       </table>
-      {deleteModal && (
-        <Modal>
-          <DeleteConfirmation />
-        </Modal>
-      )}
 
       {viewModal && (
         <Modal>

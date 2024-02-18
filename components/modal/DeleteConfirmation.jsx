@@ -9,7 +9,9 @@ import {
 } from "../../actions/projects.actions";
 const DeleteConfirmation = () => {
   const dispatch = useDispatch();
-  const { currentProject } = useSelector((store) => store.menuStore);
+  const { currentProject, deleteModal } = useSelector(
+    (store) => store.menuStore
+  );
   async function handleDelete() {
     await deleteProject(currentProject._id);
     dispatch(resetModal());
@@ -22,13 +24,16 @@ const DeleteConfirmation = () => {
     dispatch(getProjectsAction());
     dispatch(getActiveProjectsAction());
   }
+  if (!deleteModal.isOpen) {
+    return null;
+  }
   return (
     <div className="flex flex-col gap-2">
       <h1 className="text-md font-bold">
-        Are you sure want to delete this projects?
+        Are you sure want to delete this item?{" "}
       </h1>
       <p className="font-sans text-sm text-gray-400">
-        This action cannot be undone.
+        This action cannot be undone{" "}
       </p>
       <span className="flex gap-2 w-full justify-start">
         <button
