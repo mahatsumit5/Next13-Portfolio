@@ -17,13 +17,12 @@ const Skills = () => {
         return dispatch(setModal({ show: true, type, data: item }));
       case "edit skill":
         return dispatch(setModal({ show: true, type, ...item }));
-      case "delete":
+      case "delete skill":
         return dispatch(
           setModal({
             show: true,
-            type: "delete",
-            title: "Are you sure want to delete this item?",
-            subtitle: "This action cannot be undone.",
+            type,
+
             ...item,
           })
         );
@@ -111,7 +110,7 @@ const Skills = () => {
               <button
                 className=" hover:scale-110 transition-all p-2 rounded-lg bg-red-600 text-white font-bold"
                 onClick={() => {
-                  openModal(item, "delete");
+                  openModal(item, "delete skill");
                 }}
               >
                 Delete

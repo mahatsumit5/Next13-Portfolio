@@ -43,13 +43,12 @@ export default function CustomTable() {
             ...item,
           })
         );
-      case "delete":
+      case "delete project":
         dispatch(
           setModal({
             show: true,
             type,
-            title: "Are you sure want to delete this project?",
-            subtitle: "This action cannot be undone.",
+
             ...item,
           })
         );
@@ -152,7 +151,7 @@ export default function CustomTable() {
                   <button
                     className="p-2 rounded-lg bg-red-600 text-white font-bold"
                     onClick={() => {
-                      handleModelOpen(item, "delete");
+                      handleModelOpen(item, "delete project");
                     }}
                   >
                     Delete

@@ -1,19 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetModal } from "../../redux/useMenuSlice";
-import { deleteProject } from "../../lib/axios";
+import { deleteProject, deleteSkill } from "../../lib/axios";
 import { openToast } from "../../redux/toastSlice";
 import {
   getActiveProjectsAction,
   getProjectsAction,
 } from "../../actions/projects.actions";
+import {
+  getActiveSkillsAction,
+  getAllSkillsAction,
+} from "../../actions/skills.action";
 const DeleteConfirmation = () => {
   const dispatch = useDispatch();
-  const { currentProject, deleteModal } = useSelector(
+  const { currentProject, deleteModal, currentSkill } = useSelector(
     (store) => store.menuStore
   );
   async function handleDelete() {
-    await deleteProject(currentProject._id);
+    const response =
+      deleteModal.type === "delete project"
+        ? await deleteProject(currentProject._id)
+        : await deleteSkill(currentSkill._id);
+    console.log(response);
     dispatch(resetModal());
     dispatch(
       openToast({
@@ -21,8 +29,15 @@ const DeleteConfirmation = () => {
         message: "Your project has been deleted.",
       })
     );
-    dispatch(getProjectsAction());
-    dispatch(getActiveProjectsAction());
+    switch (deleteModal.type) {
+      case "delete project":
+        dispatch(getProjectsAction());
+        dispatch(getActiveProjectsAction());
+
+      case "delete skill":
+        dispatch(getAllSkillsAction());
+        dispatch(getActiveSkillsAction());
+    }
   }
   if (!deleteModal.isOpen) {
     return null;

@@ -6,6 +6,7 @@ const initialState = {
   formModal: false,
   deleteModal: {
     isOpen: false,
+    type: "",
   },
   title: "",
   skillModal: false,
@@ -20,18 +21,19 @@ const modalSlice = createSlice({
       state.isOpen = payload;
     },
     setModal: (state, { payload }) => {
-      console.log(payload);
-      const { show, type, title, subtitle, ...rest } = payload;
-      state.currentProject = rest;
+      const { show, type, ...rest } = payload;
 
       switch (type) {
         case "view":
           state.viewModal = show;
+          state.currentProject = rest;
 
           return;
         case "edit":
           state.formModal = show;
           state.title = "Edit project";
+          state.currentProject = rest;
+
           return;
         case "new project":
           state.formModal = show;
@@ -47,11 +49,16 @@ const modalSlice = createSlice({
           state.currentSkill = rest;
           return;
 
-        case "delete":
-          console.log(rest);
+        case "delete project":
           state.deleteModal.isOpen = true;
-          state.deleteModal.title = title;
-          state.deleteModal.subtitle = subtitle;
+          state.deleteModal.type = type;
+          state.currentProject = rest;
+
+          return;
+        case "delete skill":
+          state.deleteModal.isOpen = true;
+          state.deleteModal.type = type;
+          state.currentSkill = rest;
           return;
 
         default:
