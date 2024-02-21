@@ -26,7 +26,7 @@ const Toast = () => {
     return null;
   } else {
     return (
-      <div className="fixed bg-black/20 z-50 h-full  w-full  top-0 left-0 backdrop-filter  ">
+      <div className="fixed bg-black/10 z-50 h-full  w-full  top-0 left-0 backdrop-filter  ">
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0, top: -200 }}

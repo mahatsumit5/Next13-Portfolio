@@ -12,7 +12,7 @@ import {
   getActiveProjectsAction,
   getProjectsAction,
 } from "../../actions/projects.actions";
-import Spinner from "../Spinner";
+import { setLoading } from "../../redux/loading";
 const initialState = {
   name: "",
   description: "",
@@ -22,7 +22,6 @@ const initialState = {
   status: "Inactive",
 };
 const ProjectForm = () => {
-  const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
   const { currentProject, formModal, title } = useSelector(
     (store) => store.menuStore
@@ -39,14 +38,13 @@ const ProjectForm = () => {
   };
   const handleClick = async (e) => {
     try {
-      setloading(true);
       ("use server");
-
+      dispatch(setLoading(true));
       const pending = currentProject?._id
         ? updateProjects(form)
         : createProjects(form);
       const { status, message, data } = await pending;
-      setloading(false);
+      dispatch(setLoading(false));
       dispatch(
         openToast({
           variant: status,
@@ -57,6 +55,7 @@ const ProjectForm = () => {
         resetfunction();
       }
     } catch (error) {
+      dispatch(setLoading(false));
       dispatch(
         openToast({
           variant: "error",
@@ -75,7 +74,7 @@ const ProjectForm = () => {
     return null;
   }
   return (
-    <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
+    <div className="fixed bg-black/60 z-40 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       <motion.form
         action={handleClick}
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-auto"
@@ -178,7 +177,6 @@ const ProjectForm = () => {
           Submit
         </button>
       </motion.form>{" "}
-      {loading && <Spinner />}
     </div>
   );
 };

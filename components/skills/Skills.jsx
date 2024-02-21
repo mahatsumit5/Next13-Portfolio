@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "../../redux/useMenuSlice";
 import Image from "next/image";
 import { getAllSkillsAction } from "../../actions/skills.action";
-
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
 const Skills = () => {
   const dispatch = useDispatch();
   const { skills } = useSelector((store) => store.dataStore);
@@ -70,7 +71,7 @@ const Skills = () => {
             {/* name */}
             <div className="flex justify-center border-r w-full">
               <div className="grid items-center ">
-                <span className="p-2  text-md md:text-2xl font-extrabold bg-slate-400 rounded-md text-white">
+                <span className="p-2  text-md md:text-lg font-extrabold bg-slate-400 rounded-md text-white">
                   {item.title}
                 </span>
               </div>
@@ -80,23 +81,23 @@ const Skills = () => {
               <Image src={item.image} alt="" fill />
             </div>
             {/* action */}
-            <div className="flex justify-center  flex-col gap-2 w-full">
+            <div className="flex justify-center flex-col  gap-2 w-full">
               {" "}
               <button
-                className=" hover:scale-110 transition-all p-2 rounded-lg bg-green-300 text-black font-bold dark:bg-green-900 dark:text-white"
+                className=" hover:scale-110 transition-all p-2 rounded-lg border-2 border-red-600 font-bold dark:border-gray-600 dark:text-white w-full flex justify-center"
                 onClick={() => {
                   openModal(item, "edit skill");
                 }}
               >
-                Edit
+                <CiEdit size={25} /> Edit
               </button>
               <button
-                className=" hover:scale-110 transition-all p-2 rounded-lg bg-red-600 text-white font-bold dark:bg-red-900"
+                className=" hover:scale-110 transition-all p-2 rounded-lg bg-red-600 text-white font-bold dark:bg-red-900 w-full flex justify-center"
                 onClick={() => {
                   openModal(item, "delete skill");
                 }}
               >
-                Delete
+                <MdDelete size={25} /> Delete
               </button>
             </div>
           </div>

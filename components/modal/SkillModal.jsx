@@ -12,6 +12,7 @@ import {
   getActiveSkillsAction,
   getAllSkillsAction,
 } from "../../actions/skills.action";
+import { setLoading } from "../../redux/loading";
 const initialState = {
   status: "",
   image: "",
@@ -27,7 +28,6 @@ const SkillModal = () => {
   useEffect(() => {
     setForm(currentSkill);
   }, [currentSkill]);
-  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   function handleOnChange(e) {
@@ -37,13 +37,11 @@ const SkillModal = () => {
   }
   async function handleSubmit(e) {
     try {
-      setLoading(true);
-
       ("use server");
+      dispatch(setLoading(true));
       const { status, message, data } = currentSkill?._id
         ? await updateSKill(form)
         : await createSkills(form);
-      setLoading(false);
       dispatch(
         openToast({
           variant: status,
@@ -54,8 +52,11 @@ const SkillModal = () => {
         dispatch(resetModal());
         dispatch(getAllSkillsAction());
         dispatch(getActiveSkillsAction());
+        dispatch(setLoading(false));
       }
     } catch (error) {
+      dispatch(setLoading(false));
+
       dispatch(
         openToast({
           variant: "error",
@@ -68,7 +69,7 @@ const SkillModal = () => {
     return null;
   }
   return (
-    <div className="fixed bg-black/10 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
+    <div className="fixed bg-black/10 z-40 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       {title !== "Edit project" && form?.image && (
         <Image
           src={form.image ? form.image : currentSkill.image}
@@ -156,7 +157,7 @@ const SkillModal = () => {
           className="w-full p-2 border-1 rounded-md bg-red-600 disabled:bg-red-300 text-white"
           type="submit"
         >
-          {loading ? <Spinner /> : "Submit"}
+          Submit
         </button>
       </motion.form>
     </div>

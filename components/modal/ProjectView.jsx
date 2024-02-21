@@ -18,7 +18,7 @@ const ProjectView = () => {
           title="website"
           loading="lazy"
           width={"100%"}
-          height={400}
+          height={500}
           referrerPolicy="unsafe-url"
         ></iframe>
       </span>
@@ -32,7 +32,7 @@ const ProjectView = () => {
         <a
           href={githubUrl}
           target="_blank"
-          className="  rounded-lg  flex gap-2 w-full justify-center items-center border-2 bg-slate-300 p-2 hover:bg-slate-400 dark:bg-slate-600"
+          className="  rounded-lg  flex gap-2 w-full justify-center items-center border-2 bg-slate-300 p-2 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500"
         >
           <Image src={git} alt="Github Link" height={24} width={24} />{" "}
           <p className="text-base">Code</p>
@@ -41,7 +41,7 @@ const ProjectView = () => {
         <a
           href={chrome}
           target="_blank"
-          className="  border-2 bg-slate-300 rounded-lg flex gap-2 w-full justify-center  items-center p-2 hover:bg-slate-400 dark:bg-slate-600"
+          className="  border-2 bg-slate-300 rounded-lg flex gap-2 w-full justify-center  items-center p-2 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500"
         >
           <Image src={Chrome} alt="chrome.svg" height={24} width={24} />{" "}
           <p className="text-base">Website</p>

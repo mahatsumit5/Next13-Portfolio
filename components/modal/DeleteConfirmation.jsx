@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetModal } from "../../redux/useMenuSlice";
 import { deleteProject, deleteSkill } from "../../lib/axios";
 import { openToast } from "../../redux/toastSlice";
+import { setLoading } from "../../redux/loading";
 import {
   getActiveProjectsAction,
   getProjectsAction,
@@ -17,11 +18,12 @@ const DeleteConfirmation = () => {
     (store) => store.menuStore
   );
   async function handleDelete() {
+    dispatch(setLoading(true));
     const response =
       deleteModal.type === "delete project"
         ? await deleteProject(currentProject._id)
         : await deleteSkill(currentSkill._id);
-    console.log(response);
+    dispatch(setLoading(false));
     dispatch(resetModal());
     dispatch(
       openToast({

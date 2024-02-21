@@ -30,7 +30,7 @@ const Contact = () => {
           dispatch(
             openToast({
               variant: "success",
-              message: "Thank you.I will get back to you shortly. ",
+              message: `Thank you.Your message has been sent.I will get back to you shortly. `,
             })
           );
         },
