@@ -28,21 +28,23 @@ const ProjectView = () => {
         </h3>
         <p className="text-left text-sm font-light">{technologies}</p>
       </span>
-      <div className="flex gap-2 items-center w-full mt-2">
+      <div className="flex gap-2  justify-between w-full mt-2">
         <a
           href={githubUrl}
           target="_blank"
-          className="text-dark-blue p-1 rounded-full text-xl"
+          className="  rounded-lg  flex gap-2 w-full justify-center items-center border-2 bg-slate-300 p-2 hover:bg-slate-400"
         >
-          <Image src={git} alt="Github Link" height={24} width={24} />
+          <Image src={git} alt="Github Link" height={24} width={24} />{" "}
+          <p className="text-base">Code</p>
         </a>
 
         <a
           href={chrome}
           target="_blank"
-          className="text-dark-blue hover:underline text-2xl"
+          className="  border-2 bg-slate-300 rounded-lg flex gap-2 w-full justify-center  items-center p-2 hover:bg-slate-400"
         >
-          <Image src={Chrome} alt="chrome.svg" height={24} width={24} />
+          <Image src={Chrome} alt="chrome.svg" height={24} width={24} />{" "}
+          <p className="text-base">Website</p>
         </a>
       </div>
     </div>

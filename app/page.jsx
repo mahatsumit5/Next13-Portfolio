@@ -8,6 +8,7 @@ import TopButton from "@/components/TopButton";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveProjectsAction } from "../actions/projects.actions";
+import Toast from "../components/toast/Toast";
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,6 +23,7 @@ const Home = () => {
       <Contact />
 
       <TopButton />
+      <Toast />
     </div>
   );
 };

@@ -1,11 +1,38 @@
 "use client";
 
+import { useRef, useState } from "react";
 import SectionTitle from "./SectionTitle.js/SectionTitle";
 import Socialcons from "./social/Socialcons";
-
+import emailjs from "@emailjs/browser";
+import { openToast } from "../redux/toastSlice";
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  }
   const sendEmail = (e) => {
     e.preventDefault();
+
+    emailjs
+      .sendForm("service_oh1i721", "template_jmbvhh5", form, {
+        publicKey: "HBNbSr2jU8PS2y0hW",
+      })
+      .then(
+        () => {
+          openToast({
+            variant: "success",
+            message: "Message sent.",
+          });
+          setForm({});
+        },
+        (error) => {
+          openToast({
+            variant: "error",
+            message: error.message,
+          });
+        }
+      );
   };
   return (
     <div
@@ -48,6 +75,7 @@ const Contact = () => {
                   name="name"
                   placeholder="Your name"
                   className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
+                  onChange={handleChange}
                 />
                 <input
                   type="email"
@@ -56,6 +84,7 @@ const Contact = () => {
                   placeholder="Your email"
                   autoComplete="email"
                   className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
+                  onChange={handleChange}
                 />
 
                 <textarea
@@ -65,6 +94,7 @@ const Contact = () => {
                   style={{ resize: "none" }}
                   placeholder="message"
                   className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
+                  onChange={handleChange}
                 />
               </div>
               <div className="flex justify-start">

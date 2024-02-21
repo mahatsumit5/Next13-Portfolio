@@ -27,17 +27,10 @@ const Skills = () => {
           })
         );
     }
-    // dispatch(
-    //   setModal({
-    //     show: true,
-    //     type,
-    //     ...item,
-    //   })
-    // );
   }
   return (
     <div className="flex flex-col items-start gap-5 bg-admin-svg w-full p-2">
-      <span>
+      {/* <span>
         <button
           className="border-2 p-4 font-bold rounded-lg bg-red-600 text-white shadow-xl hover:bg-red-700 "
           onClick={() => {
@@ -46,7 +39,7 @@ const Skills = () => {
         >
           Add Skills
         </button>
-      </span>
+      </span> */}
       {/* table */}
       <div className="w-full  bg-white shadow-md rounded-xl  gap-2 ">
         {/* Header */}

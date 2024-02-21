@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={`${poppins.className} active-modal`}>
+      <body className={`${poppins.className} active-modal  `}>
         <Provider store={store}>
           <main className="flex flex-row ">
             <SideMenu />

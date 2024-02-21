@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Skills from "@/components/skills/Skills";
 import Modal from "../../components/modal/Modal";
 import DeleteConfirmation from "../../components/modal/DeleteConfirmation";
+import { IoIosAdd } from "react-icons/io";
 export default function page() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -23,44 +24,62 @@ export default function page() {
   return (
     <>
       <div className="flex justify-between ">
-        <span className="flex justify-start w-full gap-3 p-5 ">
-          <button
-            className="p-1 border-2  border-red-300 text-red-600 rounded-md hover:bg-red-400"
-            onClick={() => {
-              router.back();
-            }}
-          >
-            Back
-          </button>
-          <button
-            className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
-            onClick={() => {
-              setComponents("ProjectTable");
-            }}
-          >
-            Projects
-          </button>
-          <button
-            className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
-            onClick={() => {
-              setComponents("Skills");
-            }}
-          >
-            Skills
-          </button>
-          <button
-            className="p-1 bg-red-600 text-white  rounded-md hover:bg-red-700"
-            onClick={() => {
-              dispatch(
-                setModal({
-                  show: true,
-                  type: "new project",
-                })
-              );
-            }}
-          >
-            New project
-          </button>
+        <span className="flex flex-col w-full gap-3 p-5 ">
+          <span className="flex justify-between">
+            <button
+              className="p-2 border-red-400  border-solid border-2  w-[150px]  rounded-lg hover:bg-red-400 hover:text-white"
+              onClick={() => {
+                router.back();
+              }}
+            >
+              Back
+            </button>
+            <button
+              className="p-2 w-[150px]   bg-red-500 text-white rounded-md hover:bg-red-400"
+              onClick={() => {
+                router.back();
+              }}
+            >
+              Logout
+            </button>
+          </span>
+
+          <span className="flex w-full justify-between border-2 rounded-lg mt-2 bg-slate-200">
+            <button
+              className="p-2  border-r   text-base hover:bg-red-200 w-full"
+              onClick={() => {
+                setComponents("ProjectTable");
+              }}
+            >
+              Projects
+            </button>
+            <button
+              className="p-1     text-base hover:bg-red-200 w-full"
+              onClick={() => {
+                setComponents("Skills");
+              }}
+            >
+              Skills
+            </button>
+          </span>
+          <span className="text-right">
+            <button
+              className="p-2 bg-red-400 text-white  rounded-full hover:scale-110 transition duration-75 ease-in-out text-2xl"
+              onClick={() => {
+                dispatch(
+                  setModal({
+                    show: true,
+                    type:
+                      componentsState === "ProjectTable"
+                        ? "new project"
+                        : "new skill",
+                  })
+                );
+              }}
+            >
+              <IoIosAdd />
+            </button>
+          </span>
         </span>
       </div>
       <div className="min-h-screen  flex justify-center">
