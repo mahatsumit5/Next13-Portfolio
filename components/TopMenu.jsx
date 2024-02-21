@@ -7,13 +7,25 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "@/redux/useMenuSlice";
 import { Kaushan_Script } from "next/font/google";
+import { useEffect } from "react";
 const lobster_font = Kaushan_Script({
   subsets: ["latin"],
   weight: ["400"],
 });
-const TopMenu = () => {
-  const { isOpen } = useSelector((store) => store.menuStore);
+const TopMenu = ({ setState }) => {
+  const { isOpen, deleteModal, skillModal, viewModal, formModal } = useSelector(
+    (store) => store.menuStore
+  );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setState(deleteModal.isOpen);
+  }, [deleteModal]);
+  useEffect(() => {
+    skillModal && setState(skillModal);
+    viewModal && setState(viewModal);
+    formModal && setState(formModal);
+  }, [skillModal, viewModal, formModal]);
   return (
     <div
       className="px-[40px]  dark:bg-black bg-light-bg py-4 z-10 max-xs:px-[20px] "
@@ -66,7 +78,7 @@ const TopMenu = () => {
           </div>
 
           <motion.a
-            href="../assets/resume.pdf"
+            href="../assets/resume.docx"
             initial={{ x: 300 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.8 }}

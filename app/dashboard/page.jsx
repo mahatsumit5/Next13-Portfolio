@@ -22,7 +22,7 @@ export default function page() {
 
   return (
     <>
-      <div className="flex justify-between overflow-hidden">
+      <div className="flex justify-between ">
         <span className="flex justify-start w-full gap-3 p-5 ">
           <button
             className="p-1 border-2  border-red-300 text-red-600 rounded-md hover:bg-red-400"

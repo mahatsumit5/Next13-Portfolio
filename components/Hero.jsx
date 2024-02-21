@@ -2,29 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
+import { Knewave } from "next/font/google";
 import "@/app/animations.css";
 import CustomTypewriter from "./typewriter/Typewriter";
-
+const KnewaveFont = Knewave({
+  weight: ["400"],
+  subsets: ["latin"],
+});
 export const Hero = () => {
   return (
     <section className="w-full  h-fit bg-light-bg relative px-[40px] py-10 max-xs:px-[20px] ">
       <div className="flex items-center justify-between h-full max-w-[1250px] mx-auto max-md:flex-col max-md:gap-10">
         <div className="flex flex-col gap-5 z-40 max-md:order-2">
           <div
-            className="text-4xl lg:text-6xl flex flex-col gap-4
-"
+            className={`text-4xl lg:text-6xl flex flex-col gap-4 ${KnewaveFont.className}`}
           >
-            <h1 className="font-bold"> Hi, I'm Sumit </h1>
+            <h1 className=""> Hi, I'm Sumit </h1>
 
             <span className="  font-bold text-dark-red mt-2">
               <CustomTypewriter />
             </span>
-            <h2 className="font-bold">From Sydney, Australia</h2>
-            <p className="mt-5 text-xl">
-              Full stack Developer. Coffee-fueled coder. Embracing new tech with
-              a smile
-            </p>
+            <h2 className="">From Sydney, Australia</h2>
+            <p className={`mt-5 text-4xl `}>Where Creativity Meets Code!</p>
           </div>
           <div className="flex gap-4 max-md:justify-center">
             <Link href="#projects">

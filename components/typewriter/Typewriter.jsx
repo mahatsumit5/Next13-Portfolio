@@ -7,7 +7,7 @@ const Black = Black_Ops_One({
 });
 export default function CustomTypewriter() {
   return (
-    <div className={`${Black.className}`}>
+    <div className={``}>
       <Typewriter
         options={{
           autoStart: true,

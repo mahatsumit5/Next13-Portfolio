@@ -23,15 +23,21 @@ const About = () => {
             animate={{ x: isInView ? 0 : "-20vw" }}
             transition={{ duration: 1 }}
           >
-            I am an IT graduate with a deep enthusiasm for Software Development,
-            holding expertise in web technologies. My academic background,
-            including a Bachelor's degree, combined with ongoing professional
-            development, has equipped me with a strong technical skill set. I am
-            dedicated to keeping pace with industry trends, making me
-            well-prepared to contribute to cutting-edge projects as a Software
-            Engineer. My proficiency in both technical and soft skills positions
-            me as a valuable asset, ready to drive innovation and make a
-            positive impact in this dynamic field.
+            Innovative and results-driven Web Developer with a passion for
+            crafting immersive digital experiences. Armed with a Bachelor's
+            degree in Information Technology and hands-on training from a
+            prestigious Coding Bootcamp, I bring a wealth of expertise in both
+            front-end and back-end development. Proficient in a multitude of
+            technologies including React, Node.js, and MongoDB, I thrive in
+            dynamic environments where creativity meets technical precision.
+            With a proven track record of delivering high-quality web
+            applications and a keen eye for detail, I am adept at transforming
+            complex ideas into elegant, user-friendly solutions. My
+            collaborative nature, strong problem-solving skills, and commitment
+            to staying at the forefront of industry trends make me an invaluable
+            asset to any development team. Ready to leverage my skills and
+            experience to drive innovation and exceed expectations as a Web
+            Developer.
           </motion.div>
         </div>
       </div>

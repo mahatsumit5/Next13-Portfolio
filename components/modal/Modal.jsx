@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdClose } from "react-icons/md";
@@ -7,6 +7,8 @@ import Image from "next/image";
 import { resetModal } from "../../redux/useMenuSlice";
 
 const Modal = ({ children }) => {
+  const overlayref = useRef();
+  const modalRef = useRef();
   const dispatch = useDispatch();
   const { currentProject } = useSelector((store) => store.menuStore);
   function handleClose() {
@@ -15,7 +17,11 @@ const Modal = ({ children }) => {
 
   return (
     <AnimatePresence>
-      <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-sm ">
+      <div
+        className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-sm "
+        id="overlay"
+        ref={overlayref}
+      >
         <Image
           src={currentProject.image}
           fill
@@ -41,7 +47,12 @@ const Modal = ({ children }) => {
             </button>
           </span>
 
-          <div className="flex mt-[4vh] w-auto justify-center z-10 overflow-y-auto ">
+          <div
+            className="flex mt-[4vh] w-auto justify-center  overflow-y-auto "
+            onClick={() => {}}
+            ref={modalRef}
+            id="modal"
+          >
             {children}
           </div>
         </motion.div>

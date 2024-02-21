@@ -13,9 +13,9 @@ const Toast = () => {
   const dispatch = useDispatch();
   const { isOpen, message, variant } = useSelector((store) => store.toastStore);
 
-  setTimeout(() => {
-    dispatch(closeToast());
-  }, 6000);
+  // setTimeout(() => {
+  //   dispatch(closeToast());
+  // }, 6000);
 
   if (!isOpen) {
     return null;

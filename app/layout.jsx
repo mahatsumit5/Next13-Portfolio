@@ -9,7 +9,7 @@ import SideMenu from "@/components/SideMenu";
 import { ThemeProvider } from "next-themes";
 import TopMenu from "@/components/TopMenu";
 import Toast from "@/components/toast/Toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -22,14 +22,23 @@ const poppins = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
+  const [state, setState] = useState(false);
+  useEffect(() => {
+    if (state) {
+      document.body.classList.add("active-modal");
+    } else {
+      document.body.classList.remove("active-modal");
+    }
+  }, [state]);
+
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${poppins.className} active-modal`}>
         <Provider store={store}>
-          <main className="flex flex-row">
+          <main className="flex flex-row ">
             <SideMenu />
             <section className="overflow-hidden pl-[300px] max-lg:pl-[146px] w-full min-h-screen max-md:pl-0">
-              <TopMenu /> {children}
+              <TopMenu setState={setState} /> {children}
               <Footer />
             </section>
             <Toast />
