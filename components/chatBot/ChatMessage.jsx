@@ -8,7 +8,7 @@ import Image from "next/image";
 import LoadingTypewriter from "../typewriter/LoadingTypewriter";
 const variants = {
   open: { opacity: 1, y: 0 },
-  closed: { opacity: 0, y: "-50%" },
+  closed: { opacity: 0, y: "-200%" },
 };
 const initialQuestions = [
   { id: 1, question: "What is your name?" },
