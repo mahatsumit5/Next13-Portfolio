@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { IoMdSunny } from "react-icons/io";
 import { BsMoonStars } from "react-icons/bs";
+import Spinner from "./Spinner";
 const lobster_font = Kaushan_Script({
   subsets: ["latin"],
   weight: ["400"],
@@ -22,6 +23,8 @@ const TopMenu = ({ setState }) => {
   const { isOpen, deleteModal, skillModal, viewModal, formModal } = useSelector(
     (store) => store.menuStore
   );
+  const { isLoading } = useSelector((store) => store.loading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -123,6 +126,7 @@ const TopMenu = ({ setState }) => {
           </span>
         </div>
       </div>
+      {isLoading && <Spinner />}
     </div>
   );
 };

@@ -81,7 +81,12 @@ const SideMenu = () => {
           className="side-menu border-r dark:bg-slate-900 "
         >
           <div className="flex w-full flex-1 flex-col gap-10 justify-between items-center">
-            <div className="flex justify-center items-center flex-col gap-2 rounded-full ">
+            <motion.div
+              className="flex justify-center items-center flex-col gap-2 rounded-full "
+              animate={{
+                scale: [1, 2, 2, 1, 1],
+              }}
+            >
               <Image
                 src="/assets/profile.JPG"
                 width={200}
@@ -90,7 +95,7 @@ const SideMenu = () => {
                 className="border-solid border-4 border-gray-200 shadow-lg rounded-full"
               />
               <p className="font-bold ">Sumit Mahat </p>
-            </div>
+            </motion.div>
 
             <div>
               {sidebarMenuLinks.map((link) => {

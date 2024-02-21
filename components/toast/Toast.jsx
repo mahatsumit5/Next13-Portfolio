@@ -13,9 +13,14 @@ const Toast = () => {
   const dispatch = useDispatch();
   const { isOpen, message, variant } = useSelector((store) => store.toastStore);
 
-  // setTimeout(() => {
-  //   dispatch(closeToast());
-  // }, 6000);
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+    setTimeout(() => {
+      dispatch(closeToast());
+    }, 7000);
+  }, [isOpen]);
 
   if (!isOpen) {
     return null;
@@ -28,7 +33,7 @@ const Toast = () => {
             animate={{ opacity: 1, top: 10 }}
             transition={{ duration: 0.5 }}
             draggable={true}
-            className={`fixed flex  ${VariantType[variant]} left-[50%] -translate-x-1/2  z-50 p-2 w-[360px] sm:w-[450px]  min-h-fit h-auto   rounded-lg `}
+            className={`fixed flex  ${VariantType[variant]} left-[50%] -translate-x-1/2  z-50 p-2 w-[360px] sm:w-fit  min-h-fit h-auto   rounded-lg `}
           >
             <span className="absolute  top-1 right-2    ">
               <button

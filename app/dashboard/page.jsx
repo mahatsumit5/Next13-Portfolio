@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ProjectForm from "@/components/form/ProjectForm";
 import CustomTable from "@/components/Table";
-import PrivatePage from "../../components/PrivatePage";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { setModal } from "@/redux/useMenuSlice";
@@ -46,17 +46,22 @@ export default function page() {
             </button>
           </span>
 
-          <span className="flex w-full justify-between border-2 rounded-lg mt-2 bg-slate-200 dark:bg-slate-600">
-            <button
-              className="p-2  border-r  border-2   text-base  w-full"
+          <span className="flex w-full justify-between  rounded-lg mt-2 bg-slate-200 dark:bg-slate-600">
+            <motion.button
+              initial={{}}
+              className={`p-2 text-base w-full rounded-lg font-bold ${
+                componentsState === "ProjectTable" && "bg-slate-300 shadow-lg"
+              } transition-colors`}
               onClick={() => {
                 setComponents("ProjectTable");
               }}
             >
               Projects
-            </button>
+            </motion.button>
             <button
-              className="p-1     text-base  w-full"
+              className={`p-1  rounded-lg   text-base  w-full font-bold ${
+                componentsState === "Skills" && "bg-slate-300 shadow-lg"
+              }`}
               onClick={() => {
                 setComponents("Skills");
               }}

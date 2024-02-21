@@ -3,6 +3,7 @@ import themeReducer from "@/redux/themeSlice";
 import toastReducer from "@/redux/toastSlice";
 import projectReducer from "@/redux/projectSlice";
 import dataReducer from "@/redux/dataSlice";
+import loadingReducer from "@/redux/loading";
 import { configureStore } from "@reduxjs/toolkit"; //this is for storing data in redux/toolkit
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     toastStore: toastReducer,
     projectStore: projectReducer,
     dataStore: dataReducer,
+    loading: loadingReducer,
   },
 });
 export { store };
