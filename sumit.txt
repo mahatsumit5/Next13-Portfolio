@@ -1,0 +1,79 @@
+
+ 
+Sumit Mahat | Web Developer
+	Sydney, NSW, Australia | mahatsumit5@gmail.com
+LinkedIn: www.linkedin.com/sumit-mahat
+GitHub: github.com/mahatsumit5
+Portfolio: www.mahatsumit.com
+Phone: +61452454986
+
+ Born in Kathmandu, Nepal
+ came to australia in 2018
+
+
+Objective
+Experienced Web Developer looking forward to obtaining a full-time job working as a Web Developer to develop, maintain and design websites.  Hands on experience in creating and developing multiple web applications using various web technologies.
+
+Education and Training
+ 
+Bachelor of Information Technology									November 2022
+Southern Cross University
+Coding Bootcamp											    October 2023
+Dented Code Academy - Rockdale, NSW 
+ Diploma of Network Security completed in 2019
+ Southern Academy of Business and Technology 
+ Advance diploma of Network Security completed in 2021
+ Southern Academy of Business and Technology
+
+Skills
+•	Front-End Development: React, Bootstrap, Tailwind, Framer Motion, Redux, Responsive Design, Material UI, HTML
+•	Back-End Development: Node.js, Express.js, Prisma ORM
+•	Database: MongoDB, MySQL, PostgreSQL, SQL
+•	Tools: Stripe Integration, Clerk Authentication, JWT authentication, ZOD validation
+•	Version Control Systems: Git, GitHub, AWS Code Commit
+•	Programming language: JavaScript, TypeScript, Java, HTML5, CSS
+•	Methodologies: Agile Development, Scrum Development
+•	Soft-Skills: Written and verbal communication, strong-problem solving skills, Attention to detail, Team Player, Adaptable, Innovative, and Collaborative skills
+
+Experience
+FULL STACK WEB DEVELOPER INTERN | 01/2024 - Current 
+Self Plus - Online
+•	Develop and design front end data representation web pages using React and Sync Fusion.
+•	Created RESTful API using Express.JS, Prisma Orm and MySQL
+•	Collaborated with Senior Developer while developing relational databases.
+
+Personal Projects
+Ecommerce Website https://next-ecommerce-seven-alpha.vercel.app/
+•	Technologies used: Next.JS, Tailwind CSS, Typescript, Shadcn, MongoDB, Stripe, and Clerk
+•	Used Next.js image optimization for better user experience.
+•	Integrated secure payment processing with Stripe API, enhancing the website's functionality.
+•	Integrated Shadcn UI library with tailwind to create responsive and appealing user interface.
+
+Content Management System (CMS) http://cfw-cms-website.s3-website-us-east-1.amazonaws.com
+•	Technologies used: React, Bootstrap, MongoDB, Node.js, CI/CD, Code Build, S3 Bucket Nodemailer and Redux
+•	Implemented a robust AWS CI/CD pipeline using codebuild for seamless deployment of updates. 
+•	Used JSON web token to authentication and authorization and create secure server-side api.
+•	Implemented state management efficiently using Redux, ensuring scalable and organized application, contributing to smoother user experience. 
+•	Managed and maintained project assets in an AWS S3 bucket for optimal resource handling.
+
+
+Ecommerce  http://ecommwebsite.s3-website-us-east-1.amazonaws.com/
+•	Technologies used: React, Material UI, MongoDB, Node.js, CI/CD, Stripe, Code Build, S3 Bucket and Redux 
+•	Implemented a robust AWS CI/CD pipeline using codebuild for seamless deployment of updates. 
+•	Used JSON web token to authentication and authorization.
+•	Integrated state management library like Redux to maintain and update data across the application.
+•	Developed backend to handle secure Stripe payment intent integration.
+
+FINANCE TRACKER APPLICATION https://next-13-finance-tracker.vercel.app/
+•	Technologies used: NEXT.JS, Firebase, Tailwind
+•	Developed a finance tracker application using NEXT13, Firebase, and Tailwind CSS, providing users with an intuitive and responsive interface for expense tracking.
+
+EVENTLY https://next14-evently-mahatsumit5.vercel.app/
+•	Technologies used: Next.JS, MongoDB, Stripe, Tailwind CSS, Zod, TypeScript, Clerk and Radix UI
+•	Created responsive design using Tailwind CSS. 
+•	Integrated secure payment processing with Stripe API, enhancing the website's functionality. 
+•	Integrated data validation using ZOD.
+
+
+References
+References available upon request.
