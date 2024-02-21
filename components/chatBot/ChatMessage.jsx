@@ -29,11 +29,10 @@ const ChatMessage = () => {
 
     const { response } = await askQuestion(question);
     dispatch(setMessage(response));
-    console.log(botRef);
   }
   return (
     <motion.div
-      className="fixed right:0 sm:right-[1rem] bottom-[3rem] h-[90vh] sm:h-[500px] bg-gray-200 z-50 w-full  sm:w-[350px]  rounded-md flex flex-col gap-3 dark:bg-slate-800"
+      className=" fixed right:0 sm:right-[1rem] s bottom-0 sm:bottom-[3rem] h-full sm:h-[500px] bg-gray-200 z-50 w-full  sm:w-[350px]  rounded-md flex flex-col gap-3 dark:bg-slate-800"
       initial={{ opacity: 0, y: "-50%" }}
       animate={isOpen ? "open" : "closed"}
       variants={variants}
