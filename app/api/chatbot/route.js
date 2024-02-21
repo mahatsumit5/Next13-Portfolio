@@ -30,8 +30,7 @@ export async function POST(req) {
     });
     const { message } = completion.choices[0];
     return NextResponse.json({
-      status: "success",
-      message,
+      response: message.content,
     });
   } catch (error) {
     return NextResponse.json({

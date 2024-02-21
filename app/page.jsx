@@ -5,6 +5,8 @@ import { Hero } from "@/components/Hero";
 import Projects from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import TopButton from "@/components/TopButton";
+import ChatButton from "@/components/chatBot/ChatButton";
+import ChatMessage from "@/components/chatBot/ChatMessage";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveProjectsAction } from "../actions/projects.actions";
@@ -24,6 +26,8 @@ const Home = () => {
 
       <TopButton />
       <Toast />
+      <ChatButton />
+      <ChatMessage />
     </div>
   );
 };
