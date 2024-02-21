@@ -16,10 +16,10 @@ const page = () => {
   }, []);
 
   return (
-    <div className="flex justify-start  flex-col gap-2 items-center min-h-full bg-admin-svg">
+    <div className="flex justify-start  flex-col gap-2 items-center min-h-full bg-admin-svg dark:bg-slate-950">
       <div className="flex justify-start w-full gap-3 p-5 ">
         <button
-          className="p-1 border-2  border-red-300 text-red-600 rounded-md hover:bg-red-400 hover:text-white"
+          className="p-1 border-2  border-red-300 text-red-600 rounded-md hover:bg-red-400 hover:text-white dark:bg-red-900 w-[100px]"
           onClick={() => {
             router.back();
           }}

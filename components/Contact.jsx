@@ -36,7 +36,7 @@ const Contact = () => {
   };
   return (
     <div
-      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] bg-light-bg"
+      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] bg-light-bg dark:bg-slate-900"
       id="contact"
     >
       <div className="max-w-[1250px] mx-auto">
@@ -45,20 +45,23 @@ const Contact = () => {
             {/* contact form */}
             <SectionTitle title={"Contact Me"} />
 
-            <p className="text-dark-blue mt-2">
+            <p className="text-dark-blue mt-2 dark:text-white">
               Wanna work on a project togther.
               <br></br>
               Feel free to contact me.
             </p>
-            <p className="text-dark-blue mt-12">Email me at:</p>
+            <p className="text-dark-blue mt-12 dark:text-white">Email me at:</p>
             <h4>
-              <a href="#" className="text-lg font-semibold text-dark-blue">
+              <a
+                href="#"
+                className="text-lg font-semibold text-dark-blue dark:text-white"
+              >
                 mahatsumit5@gmail.com
               </a>
             </h4>
             <div className="mt-12">
               <div className="flex flex-col gap-2">
-                <h5 className="text-dark-blue">Socials</h5>
+                <h5 className="text-dark-blue dark:text-white">Socials</h5>
                 <div className="flex gap-5">
                   <Socialcons />
                 </div>
@@ -74,7 +77,7 @@ const Contact = () => {
                   id="name"
                   name="name"
                   placeholder="Your name"
-                  className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
+                  className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red dark:bg-slate-600"
                   onChange={handleChange}
                 />
                 <input
@@ -83,7 +86,7 @@ const Contact = () => {
                   name="email"
                   placeholder="Your email"
                   autoComplete="email"
-                  className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
+                  className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red dark:bg-slate-600"
                   onChange={handleChange}
                 />
 
@@ -93,7 +96,7 @@ const Contact = () => {
                   rows="5"
                   style={{ resize: "none" }}
                   placeholder="message"
-                  className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red"
+                  className="w-full text-gray-700 border-slate-200 rounded py-4 px-4 mb-4 leading-tight focus:outline-dark-red dark:bg-slate-600"
                   onChange={handleChange}
                 />
               </div>

@@ -7,7 +7,7 @@ module.exports = withUt({
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: "class",
   theme: {
     screens: {
       xs: "475px",

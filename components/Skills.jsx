@@ -14,7 +14,7 @@ export const Skills = () => {
   }, []);
   return (
     <section
-      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"
+      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white dark:bg-slate-900"
       id="skills"
     >
       <div className="max-w-[1250px] mx-auto">
@@ -24,7 +24,7 @@ export const Skills = () => {
         {activeSkills.map((skill) => (
           <div
             key={skill.id}
-            className="p-4 shadow-md rounded-lg text-center flex flex-col items-center hover:animate-pulse hover:bg-slate-200  justify-center"
+            className="p-4 shadow-md rounded-lg text-center flex flex-col items-center hover:animate-pulse hover:bg-slate-200  justify-center dark:bg-slate-600 dark:hover:bg-slate-400"
           >
             <Image src={skill.image} alt={skill.title} height={80} width={80} />
             <span className="font-bold">{skill.title}</span>

@@ -10,7 +10,7 @@ const About = () => {
   const isInView2 = useInView(ref2);
   return (
     <section
-      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white "
+      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white dark:bg-slate-900"
       id="about"
     >
       <div className="max-w-[1240px] mx-auto">
@@ -18,7 +18,7 @@ const About = () => {
         <div className="mt-7">
           <motion.div
             ref={ref}
-            className="mt-6 text-gray-600 text-[16px] leading-10 text-justify"
+            className="mt-6 text-gray-600 text-[16px] leading-10 text-justify dark:text-gray-300"
             initial={{ x: "-20vw" }}
             animate={{ x: isInView ? 0 : "-20vw" }}
             transition={{ duration: 1 }}
@@ -50,7 +50,7 @@ const About = () => {
               animate={{ x: isInView2 ? 0 : "-30vw" }}
               transition={{ duration: 0.9 }}
             >
-              <div className="w-full text-center py-[30px] md:py-[60px] rounded-md bg-light-bg">
+              <div className="w-full text-center py-[30px] md:py-[60px] rounded-md bg-light-bg dark:bg-slate-600">
                 <h3 className="text-[40px] mb-[3px] text-dark-red font-bold">
                   5+
                 </h3>
@@ -63,7 +63,7 @@ const About = () => {
               animate={{ x: isInView2 ? 0 : "-30vw" }}
               transition={{ duration: 0.6 }}
             >
-              <div className="w-full text-center py-[30px] md:py-[60px] rounded-md bg-light-bg">
+              <div className="w-full text-center py-[30px] md:py-[60px] rounded-md bg-light-bg dark:bg-slate-600">
                 <h3 className="text-[40px] mb-[3px] text-dark-red font-bold">
                   Graduate
                 </h3>
@@ -77,7 +77,7 @@ const About = () => {
               animate={{ x: isInView2 ? 0 : "-30vw" }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-full text-center py-[30px] md:py-[60px] rounded-md bg-light-bg">
+              <div className="w-full text-center py-[30px] md:py-[60px] rounded-md bg-light-bg dark:bg-slate-600">
                 <h3 className="text-[40px] mb-[3px] text-dark-red font-bold">
                   2 years
                 </h3>

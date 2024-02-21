@@ -68,7 +68,7 @@ const SkillModal = () => {
     return null;
   }
   return (
-    <div className="fixed bg-black/80 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-xl ">
+    <div className="fixed bg-black/10 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       {title !== "Edit project" && form?.image && (
         <Image
           src={form.image ? form.image : currentSkill.image}
@@ -81,7 +81,7 @@ const SkillModal = () => {
         action={(e) => {
           handleSubmit(e);
         }}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit md:h-fit z-50 transition-all flex flex-col justify-start p-4 rounded-md bg-slate-300 gap-2 w-full md:w-[500px] "
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit md:h-fit z-50 transition-all flex flex-col justify-start p-4 rounded-md bg-slate-300 gap-2 w-full md:w-[500px]  dark:bg-slate-600"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}

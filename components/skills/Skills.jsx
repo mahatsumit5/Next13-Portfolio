@@ -29,17 +29,7 @@ const Skills = () => {
     }
   }
   return (
-    <div className="flex flex-col items-start gap-5 bg-admin-svg w-full p-2">
-      {/* <span>
-        <button
-          className="border-2 p-4 font-bold rounded-lg bg-red-600 text-white shadow-xl hover:bg-red-700 "
-          onClick={() => {
-            openModal({}, "new skill");
-          }}
-        >
-          Add Skills
-        </button>
-      </span> */}
+    <div className="flex flex-col items-start gap-5 bg-admin-svg w-full p-2 dark:bg-slate-900">
       {/* table */}
       <div className="w-full  bg-white shadow-md rounded-xl  gap-2 ">
         {/* Header */}
@@ -60,7 +50,7 @@ const Skills = () => {
         {/* body */}
         {skills.map((item) => (
           <div
-            className=" p-2 w-full flex  justify-between gap-2"
+            className=" p-2 w-full flex  justify-between gap-2 dark:bg-slate-900"
             key={item._id}
           >
             {/* Status */}
@@ -69,8 +59,8 @@ const Skills = () => {
                 <span
                   className={
                     item.status === "Active"
-                      ? " p-2 rounded-md bg-green-600 text-white font-bold "
-                      : "p-2 rounded-md bg-red-600 text-white"
+                      ? " p-2 rounded-md bg-green-600 text-white font-bold dark:bg-green-900"
+                      : "p-2 rounded-md bg-red-600 dark:bg-red-900 text-white"
                   }
                 >
                   {item.status}
@@ -86,14 +76,14 @@ const Skills = () => {
               </div>
             </div>
             {/* image */}
-            <div className=" relative flex justify-center  w-full ">
+            <div className=" relative flex justify-center  w-full dark:bg-slate-600 dark:rounded-md">
               <Image src={item.image} alt="" fill />
             </div>
             {/* action */}
             <div className="flex justify-center  flex-col gap-2 w-full">
               {" "}
               <button
-                className=" hover:scale-110 transition-all p-2 rounded-lg bg-green-300 text-black font-bold"
+                className=" hover:scale-110 transition-all p-2 rounded-lg bg-green-300 text-black font-bold dark:bg-green-900 dark:text-white"
                 onClick={() => {
                   openModal(item, "edit skill");
                 }}
@@ -101,7 +91,7 @@ const Skills = () => {
                 Edit
               </button>
               <button
-                className=" hover:scale-110 transition-all p-2 rounded-lg bg-red-600 text-white font-bold"
+                className=" hover:scale-110 transition-all p-2 rounded-lg bg-red-600 text-white font-bold dark:bg-red-900"
                 onClick={() => {
                   openModal(item, "delete skill");
                 }}

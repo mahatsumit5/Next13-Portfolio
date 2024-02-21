@@ -18,7 +18,7 @@ const Modal = ({ children }) => {
   return (
     <AnimatePresence>
       <div
-        className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-sm "
+        className="fixed bg-black/50 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-sm  "
         id="overlay"
         ref={overlayref}
       >
@@ -29,12 +29,12 @@ const Modal = ({ children }) => {
           className="object-cover overflow-hidden filter blur-md"
         />
         <motion.div
-          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4   w-[90vw] md:w-[70vw]  lg:w-fit rounded-lg max-h-[95vh] min-h-[25vh] bg-gray-200 z-50  transition-all  flex justify-center "
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4   w-[90vw] md:w-[70vw]  lg:w-fit rounded-lg max-h-[95vh] min-h-[25vh] bg-gray-200 z-50  transition-all  flex justify-center dark:bg-slate-600"
           initial={{ height: 0 }}
           animate={{ height: "auto" }}
           transition={{ duration: 0.2 }}
         >
-          <span className="absolute h-[5vh] top-1 right-2 border-2 border-solid  ">
+          <span className="absolute h-[5vh] top-1 right-2   ">
             <button
               onClick={handleClose}
               className=" rounded-full bg-red-400 p-1 hover:scale-110 transition-all"

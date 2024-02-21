@@ -78,7 +78,7 @@ const SideMenu = () => {
             width: screenSize < 1024 ? "150px" : "300px",
           }}
           transition={{ duration: 0.5 }}
-          className="side-menu border-r dark:bg-slate-700 "
+          className="side-menu border-r dark:bg-slate-900 "
         >
           <div className="flex w-full flex-1 flex-col gap-10 justify-between items-center">
             <div className="flex justify-center items-center flex-col gap-2 rounded-full ">

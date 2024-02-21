@@ -9,13 +9,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveProjectsAction } from "../actions/projects.actions";
 import Toast from "../components/toast/Toast";
+import { ThemeProvider } from "next-themes";
+
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getActiveProjectsAction());
   }, []);
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden dark:bg-slate-900">
       <Hero />
       <About />
       <Skills />

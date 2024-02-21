@@ -12,6 +12,7 @@ import Modal from "../../components/modal/Modal";
 import DeleteConfirmation from "../../components/modal/DeleteConfirmation";
 import { IoIosAdd } from "react-icons/io";
 export default function page() {
+  const [cookies, setCookies, removeCookie] = useCookies(["token"]);
   const router = useRouter();
   const dispatch = useDispatch();
   const [componentsState, setComponents] = useState("Skills");
@@ -23,13 +24,13 @@ export default function page() {
 
   return (
     <>
-      <div className="flex justify-between ">
+      <div className="flex justify-between dark:bg-slate-900">
         <span className="flex flex-col w-full gap-3 p-5 ">
           <span className="flex justify-between">
             <button
               className="p-2 border-red-400  border-solid border-2  w-[150px]  rounded-lg hover:bg-red-400 hover:text-white"
               onClick={() => {
-                router.back();
+                router.push("/");
               }}
             >
               Back
@@ -37,16 +38,17 @@ export default function page() {
             <button
               className="p-2 w-[150px]   bg-red-500 text-white rounded-md hover:bg-red-400"
               onClick={() => {
-                router.back();
+                removeCookie("token");
+                router.push("/login");
               }}
             >
               Logout
             </button>
           </span>
 
-          <span className="flex w-full justify-between border-2 rounded-lg mt-2 bg-slate-200">
+          <span className="flex w-full justify-between border-2 rounded-lg mt-2 bg-slate-200 dark:bg-slate-600">
             <button
-              className="p-2  border-r   text-base hover:bg-red-200 w-full"
+              className="p-2  border-r  border-2   text-base  w-full"
               onClick={() => {
                 setComponents("ProjectTable");
               }}
@@ -54,7 +56,7 @@ export default function page() {
               Projects
             </button>
             <button
-              className="p-1     text-base hover:bg-red-200 w-full"
+              className="p-1     text-base  w-full"
               onClick={() => {
                 setComponents("Skills");
               }}

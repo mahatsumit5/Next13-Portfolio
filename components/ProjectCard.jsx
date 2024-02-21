@@ -38,11 +38,13 @@ const ProjectCard = ({
         initial={{ y: "-10vh" }}
         animate={{ y: isInView ? 0 : "-10vh" }}
         transition={{ duration: 0.5 }}
-        className="mb-4 p-4  rounded-lg shadow-md bg-light-bg hover:cursor-pointer hover:shadow-lg relative"
+        className="mb-4 p-4  rounded-lg shadow-md bg-light-bg hover:cursor-pointer hover:shadow-lg relative dark:bg-slate-600"
         onMouseEnter={(e) => setHovered(true)}
         onMouseLeave={(e) => setHovered(false)}
       >
-        <h3 className=" text-dark-blue text-xl font-semibold">{name}</h3>
+        <h3 className=" text-dark-blue text-xl font-semibold dark:text-white">
+          {name}
+        </h3>
         <div className="h-[180px] w-full overflow-hidden mt-5">
           <img
             src={image}

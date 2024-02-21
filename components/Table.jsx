@@ -58,9 +58,9 @@ export default function CustomTable() {
   }
 
   return (
-    <div className=" p-2 overflow-x-auto relative ">
-      <table className="   max-w-6xl  bg-white dark:bg-slate-950 shadow-xl table-fixed overflow-scroll ">
-        <thead className="bg-slate-300 text-left sticky top-0 z-10">
+    <div className=" p-2 overflow-x-auto relative dark:bg-slate-900">
+      <table className="   max-w-6xl  bg-white dark:bg-slate-900 shadow-xl table-fixed overflow-scroll ">
+        <thead className="bg-slate-300 text-left sticky top-0 z-10 dark:bg-slate-600">
           <tr className="border-2">
             <th className="p-5 w-[80px] border-2">Status</th>
             <th className="p-5 w-[80px] border-2">Project Name</th>
@@ -71,7 +71,7 @@ export default function CustomTable() {
             <th className="w-2/12">Actions</th>
           </tr>
         </thead>
-        <tbody className="p-4 border-2 rounded-md divide-y-2 divide-solid divide-gray-200 text-center overflow-scroll">
+        <tbody className=" rounded-md divide-y-2 divide-solid divide-gray-200 text-center overflow-scroll dark:divide-gray-600 dark:border-gray-600">
           {projects.map((item) => {
             return (
               <tr key={item._id}>
@@ -104,7 +104,7 @@ export default function CustomTable() {
                     <a
                       href={item.githubUrl}
                       target="_blank"
-                      className="text-dark-blue p-1 rounded-full text-xl"
+                      className="text-dark-blue p-1 rounded-full text-xl dark:bg-white"
                     >
                       <Image
                         src={git}

@@ -42,7 +42,7 @@ function LoginForm({ router }) {
   };
   return (
     <form
-      className="flex p-8 gap-2 rounded-lg shadow-md  flex-col w-[350px] bg-black/30 backdrop-blur-md"
+      className="flex p-8 gap-2 rounded-lg shadow-md  flex-col w-[350px] bg-black/30 backdrop-blur-md dark:bg-slate-600/30"
       action={handleOnSubmit}
     >
       <h1 className="text-2xl text-ellipsis font-bold"> Welcome Back </h1>
@@ -51,7 +51,7 @@ function LoginForm({ router }) {
       </p>
       <label>Email</label>
       <input
-        className="w-full border-2 p-3 rounded-md focus:outline-dark-red "
+        className="w-full border-2 p-3 rounded-md focus:outline-dark-red  dark:bg-slate-600"
         placeholder="johnsmith@gmail.com"
         name="email"
         type="email"
@@ -60,7 +60,7 @@ function LoginForm({ router }) {
       />{" "}
       <label>Password</label>
       <input
-        className="w-full border-2 p-3 rounded-md focus:outline-dark-red "
+        className="w-full border-2 p-3 rounded-md focus:outline-dark-red dark:bg-slate-600"
         placeholder="password"
         name="password"
         required
@@ -68,7 +68,7 @@ function LoginForm({ router }) {
         onChange={(e) => setForm({ ...form, password: e.target.value })}
       />{" "}
       <button
-        className="w-full p-2 border-1 rounded-md bg-red-600 disabled:bg-red-300 text-white hover:bg-red-500"
+        className="w-full p-2 border-1 rounded-md bg-red-600 disabled:bg-red-300 text-white hover:bg-red-500 dark:disabled:bg-orange-900 dark:bg-red-800"
         type="submit"
         disabled={!form.email || !form.password || loading}
       >

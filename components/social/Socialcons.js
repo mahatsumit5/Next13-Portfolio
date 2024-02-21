@@ -13,7 +13,11 @@ const Socialcons = () => {
       >
         <Image src={LinkedIn} alt="image" height={25} width={25} />
       </a>
-      <a href="https://github.com/mahatsumit5" target="_blank" className="">
+      <a
+        href="https://github.com/mahatsumit5"
+        target="_blank"
+        className="dark:bg-white dark:rounded-full"
+      >
         <Image src={github} alt="image" height={25} width={25} />
       </a>
       <a

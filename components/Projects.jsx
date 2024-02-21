@@ -14,7 +14,7 @@ const Projects = () => {
 
   return (
     <div
-      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white"
+      className="w-full h-fit px-[40px] py-10 max-xs:px-[20px] relative bg-white dark:bg-slate-900"
       id="projects"
     >
       <div className="max-w-[1250px] m-auto">
