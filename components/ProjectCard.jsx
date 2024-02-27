@@ -12,7 +12,9 @@ const ProjectCard = ({
   description,
   technologies,
   chrome,
+  tags,
 }) => {
+  console.log(tags);
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [hovered, setHovered] = useState(false);
@@ -52,6 +54,16 @@ const ProjectCard = ({
             className="mb-2 rounded  "
             style={{ objectFit: "fill" }}
           />
+        </div>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {tags.map(({ _id, name }) => (
+            <span
+              className="bg-gray-400 px-2 py-1 text-slate-900 rounded-full text-xs font-bold dark:bg-slate-800 dark:text-white"
+              key={_id}
+            >
+              {name}
+            </span>
+          ))}
         </div>
         {hovered && (
           <motion.div

@@ -13,23 +13,28 @@ import {
   getProjectsAction,
 } from "../../actions/projects.actions";
 import { setLoading } from "../../redux/loading";
+import MultiSelect from "../MultiSelect";
 const initialState = {
-  name: "",
-  description: "",
-  image: "",
+  name: " ",
+  description: " ",
+  image: " ",
   chrome: "",
   githubUrl: "",
   status: "Inactive",
+  tags: [],
 };
 const ProjectForm = () => {
   const dispatch = useDispatch();
   const { currentProject, formModal, title } = useSelector(
     (store) => store.menuStore
   );
+
   const [form, setForm] = useState(
     currentProject?._id ? currentProject : initialState
   );
+
   useEffect(() => {
+    console.log(currentProject);
     setForm(currentProject);
   }, [currentProject]);
   const handleOnChange = (e) => {
@@ -42,7 +47,12 @@ const ProjectForm = () => {
       dispatch(setLoading(true));
       const pending = currentProject?._id
         ? updateProjects(form)
-        : createProjects(form);
+        : // : createProjects(form);
+          createProjects({
+            ...form,
+            image:
+              "https://utfs.io/f/7ff678db-c20e-4e1f-9dcd-787cc6f4f393-otl4e0.png",
+          });
       const { status, message, data } = await pending;
       dispatch(setLoading(false));
       dispatch(
@@ -64,6 +74,7 @@ const ProjectForm = () => {
       );
     }
   };
+  console.log(form);
   function resetfunction() {
     dispatch(resetModal());
     setForm({});
@@ -74,7 +85,7 @@ const ProjectForm = () => {
     return null;
   }
   return (
-    <div className="fixed bg-black/60 z-40 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
+    <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       <motion.form
         action={handleClick}
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-auto"
@@ -109,6 +120,7 @@ const ProjectForm = () => {
               defaultChecked={
                 currentProject?.status === "Active" ? true : false
               }
+              defaultValue={currentProject?.status === "Active" ? true : false}
             />
 
             <label
@@ -140,6 +152,7 @@ const ProjectForm = () => {
           value={form.chrome}
           required
         />
+        <MultiSelect handleOnChange={handleOnChange} tags={form?.tags} />
         <input
           className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
           placeholder="Github Url"

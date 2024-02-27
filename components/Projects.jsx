@@ -30,6 +30,7 @@ const Projects = () => {
               chrome={project.chrome}
               description={project.description}
               technologies={project.technologies}
+              tags={project.tags}
             />
           ))}
           {viewModal && (

@@ -62,11 +62,13 @@ export default function CustomTable() {
       <table className="   max-w-6xl  bg-white dark:bg-slate-900 shadow-xl table-fixed overflow-scroll ">
         <thead className="bg-slate-300 text-left sticky top-0 z-10 dark:bg-slate-600">
           <tr className="border-2">
-            <th className="p-5 w-[80px] border-2">Status</th>
-            <th className="p-5 w-[80px] border-2">Project Name</th>
-            <th className="w-36 border-2">Image</th>
-            <th className="border-2 w-24"> URL</th>
-            <th className="w-2/12 border-2">Technologies Used</th>
+            <th className="p-5 w-[80px] border-2 text-center">Status</th>
+            <th className="p-5 w-[80px] border-2 text-center">Project Name</th>
+            <th className="w-36 border-2 text-center">Image</th>
+            <th className="border-2 w-24 text-center"> URL</th>
+            <th className="w-2/12 border-2 p-2 text-center">
+              Technologies Used
+            </th>
             <th className="w-3/12 border-2">Description</th>
             <th className="w-2/12">Actions</th>
           </tr>
@@ -129,7 +131,16 @@ export default function CustomTable() {
                     </a>
                   </div>
                 </td>
-                <td>1961</td>
+                <td className=" flex gap-2 flex-wrap">
+                  {item.tags.map(({ _id, name }) => (
+                    <span
+                      className="bg-gray-400 px-2 py-1 text-slate-900 rounded-full text-xs font-bold dark:bg-slate-800 dark:text-white"
+                      key={_id}
+                    >
+                      {name}
+                    </span>
+                  ))}
+                </td>
                 <td className="">{item.description}</td>
                 <td className="p-2 flex gap-2 flex-col">
                   <button

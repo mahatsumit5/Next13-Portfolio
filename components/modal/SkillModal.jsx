@@ -76,6 +76,9 @@ const SkillModal = () => {
           alt="selected image"
           className="rounded-md object-cover absolute inset-0 w-full h-full filter "
           fill
+          onClick={() => {
+            dispatch(resetModal());
+          }}
         />
       )}
       <motion.form

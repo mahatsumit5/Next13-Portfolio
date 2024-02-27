@@ -115,7 +115,8 @@ const Contact = () => {
               <div className="flex justify-start">
                 <button
                   type="submit"
-                  className="transition-all duration-150  rounded-lg py-3 px-6 text-white bg-dark-red hover:shadow-lg hover:bg-dark-red/75 flex w-[170px] justify-center"
+                  className="transition-all duration-150  rounded-lg py-3 px-6 text-white bg-dark-red hover:shadow-lg hover:bg-dark-red/75 flex w-[170px] justify-center disabled:bg-red-400 "
+                  disabled={!form.email || !form.message || !form.name}
                 >
                   {" "}
                   Send Message

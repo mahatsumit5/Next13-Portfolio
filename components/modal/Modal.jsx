@@ -27,6 +27,7 @@ const Modal = ({ children }) => {
           fill
           alt="image"
           className="object-cover overflow-hidden filter blur-md"
+          onClick={handleClose}
         />
         <motion.div
           className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4   w-[90vw] md:w-[70vw]  lg:w-fit rounded-lg max-h-[95vh] min-h-[25vh] bg-gray-200 z-50  transition-all  flex justify-center dark:bg-slate-600"
