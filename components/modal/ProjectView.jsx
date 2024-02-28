@@ -5,29 +5,46 @@ import Chrome from "@/public/chrome.svg";
 import git from "@/public/github.svg";
 const ProjectView = () => {
   const { currentProject } = useSelector((store) => store.menuStore);
-  const { name, description, chrome, image, githubUrl, technologies } =
+  const { name, description, chrome, image, githubUrl, technologies, tags } =
     currentProject;
+  console.log(currentProject);
   return (
     <div className="w-full h-full ">
-      <span className="flex justify-between py-4">
+      <span className="flex justify-between py-1">
         <h1 className=" text-xl font-bold line-clamp-1">{name}</h1>
       </span>
-      <span>
-        <iframe
+      <div className="relative h-72  rounded-md w-full">
+        {/* <iframe
           src={chrome}
           title="website"
           loading="lazy"
           width={"100%"}
           height={500}
           referrerPolicy="unsafe-url"
-        ></iframe>
-      </span>
+        ></iframe> */}
+        <Image
+          src={image}
+          fill
+          alt={name}
+          className="object-cover rounded-md"
+        />
+      </div>
       <span>
-        <h3 className="text-justify text-sm  pt-5 font-normal">
+        <h3 className="text-justify text-sm  pt-5 font-normal  text-gray-600 dark:text-white">
           {description}
         </h3>
         <p className="text-left text-sm font-light">{technologies}</p>
       </span>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {tags.map(({ _id, name }) => (
+          <span
+            className="bg-gray-400 px-2 py-1 text-slate-900 rounded-full text-xs font-bold dark:bg-slate-800 dark:text-white"
+            key={_id}
+          >
+            {name}
+          </span>
+        ))}
+      </div>
       <div className="flex gap-2  justify-between w-full mt-2">
         <a
           href={githubUrl}

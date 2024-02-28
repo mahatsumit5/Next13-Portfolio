@@ -21,22 +21,18 @@ const initialState = {
   chrome: "",
   githubUrl: "",
   status: "Inactive",
-  tags: [],
 };
 const ProjectForm = () => {
   const dispatch = useDispatch();
   const { currentProject, formModal, title } = useSelector(
     (store) => store.menuStore
   );
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [form, setForm] = useState(
     currentProject?._id ? currentProject : initialState
   );
 
-  useEffect(() => {
-    console.log(currentProject);
-    setForm(currentProject);
-  }, [currentProject]);
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -47,12 +43,8 @@ const ProjectForm = () => {
       dispatch(setLoading(true));
       const pending = currentProject?._id
         ? updateProjects(form)
-        : // : createProjects(form);
-          createProjects({
-            ...form,
-            image:
-              "https://utfs.io/f/7ff678db-c20e-4e1f-9dcd-787cc6f4f393-otl4e0.png",
-          });
+        : createProjects(form);
+
       const { status, message, data } = await pending;
       dispatch(setLoading(false));
       dispatch(
@@ -74,21 +66,24 @@ const ProjectForm = () => {
       );
     }
   };
-  console.log(form);
   function resetfunction() {
     dispatch(resetModal());
     setForm({});
     dispatch(getProjectsAction());
     dispatch(getActiveProjectsAction());
   }
-  if (!formModal) {
+  useEffect(() => {
+    setForm(currentProject);
+    setIsLoaded(true);
+  }, [currentProject]);
+  if (!formModal || !isLoaded) {
     return null;
   }
   return (
     <div className="fixed bg-black/60 z-50 h-full  w-full  top-0 left-0 backdrop-filter backdrop-blur-md ">
       <motion.form
         action={handleClick}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-fit z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-auto"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-[100vh] z-50 transition-all flex flex-col justify-between p-4 rounded-md bg-slate-300/75 gap-2 w-full md:w-[500px] overflow-y-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -152,7 +147,7 @@ const ProjectForm = () => {
           value={form.chrome}
           required
         />
-        <MultiSelect handleOnChange={handleOnChange} tags={form?.tags} />
+        <MultiSelect handleOnChange={handleOnChange} />
         <input
           className="focus:outline-none  shadow-lg p-3 rounded-lg bg-slate-500 placeholder:text-white text-white active:border-none"
           placeholder="Github Url"

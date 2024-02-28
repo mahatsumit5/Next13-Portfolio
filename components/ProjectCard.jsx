@@ -14,7 +14,6 @@ const ProjectCard = ({
   chrome,
   tags,
 }) => {
-  console.log(tags);
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [hovered, setHovered] = useState(false);
@@ -30,6 +29,7 @@ const ProjectCard = ({
         description,
         technologies,
         chrome,
+        tags,
       })
     );
   }

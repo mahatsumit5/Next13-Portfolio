@@ -141,7 +141,9 @@ export default function CustomTable() {
                     </span>
                   ))}
                 </td>
-                <td className="">{item.description}</td>
+                <td className="text-xs  border-2">
+                  <p className="w-full h-full">{item.description}</p>
+                </td>
                 <td className="p-2 flex gap-2 flex-col">
                   <button
                     className="p-2 rounded-lg bg-purple-500 text-white font-bold"

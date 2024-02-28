@@ -3,7 +3,7 @@ import { FaArrowDown } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { createTags, getAlltags } from "../lib/actions/tags.action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openToast } from "../redux/toastSlice";
 import { motion } from "framer-motion";
 const TagComponent = ({ dropDownOpen, setSelectedTags, selectedTags }) => {
@@ -114,11 +114,16 @@ const TagComponent = ({ dropDownOpen, setSelectedTags, selectedTags }) => {
     </motion.div>
   );
 };
-const MultiSelect = ({ handleOnChange, tags }) => {
-  console.log(tags);
+const MultiSelect = ({ handleOnChange }) => {
+  const { currentProject } = useSelector((store) => store.menuStore);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
-
+  useEffect(() => {
+    if (!currentProject?._id) {
+      return;
+    }
+    setSelectedTags(currentProject.tags);
+  }, [currentProject]);
   useEffect(() => {
     handleOnChange({
       target: {
@@ -129,7 +134,7 @@ const MultiSelect = ({ handleOnChange, tags }) => {
   }, [selectedTags]);
   return (
     <>
-      <div className="grid relative">
+      <div className="grid relative ">
         <span className="bg-slate-500 text-white p-2 rounded-md flex gap-3 flex-wrap pr-5">
           {dropDownOpen ? (
             <FaArrowUp
